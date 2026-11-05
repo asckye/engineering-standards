@@ -1,11 +1,23 @@
 # 工程开发规范
 
-通用的工程开发规范（engineering handbook）和配套模板，用中文写成。当前版本 1.1（2026-11-02）。
+通用的工程开发规范（engineering handbook）和配套模板，用中文写成。通用规则放在一处，每类项目有自己的文件夹。
 
-## 这是什么
+## 怎么选
 
-- [手册](handbook/README.md)：项目通用部分（第 0–26 节）对任何语言和技术栈有效，其中部分规则按 Windows/.NET 写成，其他平台用等效做法（见 [0.1](handbook/general/00-purpose.md#purpose-parts)）；领域规范 A–F（MCP 服务、上位机、工程软件自动化、桌面、Web、移动）和语言附录 L1–L3（C#/.NET、TypeScript/JavaScript、Python）按需采用。
-- [模板](templates/)：任务说明、架构决策记录（ADR）、评审清单、完成定义、发布清单和项目采用文件，复制后填写。
+先读[通用规范](general/README.md)，再加项目类型对应的文件夹：
+
+| 项目类型 | 读这些 | 成熟度 |
+|---|---|---|
+| 所有项目 | [general/](general/README.md)：代码规范、注释、易读易维护、错误处理、测试、Git、发布、AI 协作 | 1.1 |
+| MCP 服务 | [mcp/](mcp/README.md) + [desktop/](desktop/README.md) 的本机部分 | 草稿 0.1，已对照两个项目 |
+| 上位机 | [hmi/](hmi/README.md) + [desktop/](desktop/README.md) | 1.1 |
+| 视觉 | [vision/](vision/README.md) + [desktop/](desktop/README.md)，需要时加 [hmi/](hmi/README.md) | 草稿 0.1，还没有项目验证 |
+| 大屏 | [dashboard/](dashboard/README.md) + [web/](web/README.md) 或 [desktop/](desktop/README.md) | 草稿 0.1，还没有项目验证 |
+| 桌面应用 | [desktop/](desktop/README.md) | 1.1 |
+| Web | [web/](web/README.md) | 1.1 |
+| 移动 App | [mobile/](mobile/README.md) | 1.1 |
+
+语言附录在 [general/languages/](general/README.md#languages)，填写用的模板在 [templates/](templates/)。
 
 ## 给谁用
 
@@ -13,18 +25,20 @@
 
 ## 在项目中采用
 
-1. 读[最小必做清单](handbook/general/00a-minimum.md)、[黄金路径](handbook/general/00b-golden-path.md)、[任务手册](handbook/general/00c-playbooks.md)和[快速交付](handbook/general/00d-fast-delivery.md)，约 15 分钟。
-2. 按 [0.1](handbook/general/00-purpose.md#purpose-parts) 和 [0.2](handbook/general/00-purpose.md#purpose-tiers) 确定项目的等级（S、M、L）和领域，写进项目 README 的“工程规范”一行。
-3. 按[第 25 节](handbook/general/25-adoption.md)建骨架、构建入口和执行机制。
-4. 想把等级、领域和长期偏差汇总在一处时，复制 [templates/project-adoption.md](templates/project-adoption.md)。
+1. 读[最小必做清单](general/00a-minimum.md)、[黄金路径](general/00b-golden-path.md)、[任务手册](general/00c-playbooks.md)和[快速交付](general/00d-fast-delivery.md)，约 15 分钟。
+2. 按 [0.1](general/00-purpose.md#purpose-parts) 和 [0.2](general/00-purpose.md#purpose-tiers) 确定项目的等级（S、M、L）和项目类型，写进项目 README 的“工程规范”一行，并读上表对应的文件夹。
+3. 按[第 25 节](general/25-adoption.md)建骨架、构建入口和执行机制。
+4. 想把等级、项目类型和长期偏差汇总在一处时，复制 [templates/project-adoption.md](templates/project-adoption.md)。
 
 ## 版本与变更
 
-版本规则见 [G-07](handbook/general/00-purpose.md#purpose-gov)。本仓库的变更见 [CHANGELOG.md](CHANGELOG.md)，手册内的记录见[规范变更记录](handbook/appendix/changelog.md)。
+通用规范和各文件夹各自标明版本和状态。版本规则见 [G-07](general/00-purpose.md#purpose-gov)，变更见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## 路线图
 
-- 1.2（计划中）：加入实测数据和按项目规模选用的清单。
+- 通用规范 1.2（计划中）：加入实测数据和按项目规模选用的清单。
+- MCP 规范：用一个新项目从零试用，再定 1.0。
+- 视觉、大屏：有项目用过后，再定哪些规则升为 MUST。
 
 ## 许可
 

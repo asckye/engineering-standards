@@ -1,6 +1,6 @@
 # 任务 \<ID\>：<标题>
 
-> 模板：[手册 T.4](../handbook/appendix/t-templates.md#tpl-task)；用法见 [19.2](../handbook/general/19-ai.md#ai-spec) 和 [FAST-04](../handbook/general/00d-fast-delivery.md#fast-ai)。复制后删去尖括号中的提示和本段。
+> 模板：[通用规范 T.4](../general/appendix/t-templates.md#tpl-task)；用法见 [19.2](../general/19-ai.md#ai-spec) 和 [FAST-04](../general/00d-fast-delivery.md#fast-ai)。复制后删去尖括号中的提示和本段。
 
 ## 目标
 

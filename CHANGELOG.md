@@ -4,6 +4,26 @@ All notable changes to this repository are recorded here. The format follows [Ke
 
 ## [Unreleased]
 
+### Added
+
+- Draft 0.1 of a dedicated MCP standard under `mcp/` for services that connect to engineering software and can write to real projects. It targets MCP 2026-07-28, marks the evidence behind each rule, and maps every rule from the earlier domains A and C.
+- Draft 0.1 of `vision/` for machine vision software and `dashboard/` for large data displays. All their rules are suggestions that no project has validated yet.
+- `desktop/local-software.md` for software that runs on a user's or site machine.
+
+### Changed
+
+- The repository is now one `general/` folder for all projects plus one folder per project type: `mcp/`, `hmi/`, `vision/`, `dashboard/`, `desktop/`, `web/` and `mobile/`. Rule ids do not change.
+- Windows, packaging, diagnostics and the desktop UI values moved from the general part to `desktop/`, along with the local pipe and HTTP rules, DAT-02, DAT-03, DAT-05, DAT-06, SEC-26, CFG-04 and MIG-05. They assumed software on the user's machine and conflicted with web projects.
+- WIN-12, WIN-14, PKG-07 and PKG-08 moved the other way, into `general/`, because every project needs them.
+- Project-type rules now take precedence over the general part when the two conflict, but they do not loosen a MUST elsewhere unless they say so.
+- Section 0.1 now says that the confirm-before-write and unknown-outcome rules apply to writes started by automation or AI and to writes to target software and devices, not to a user saving in their own interface.
+- SEC-19 now covers server-side secret stores as well as the Windows user store, and CFG-03 limits local network listening to software on a user's machine.
+- References now point at MCP 2026-07-28.
+
+### Removed
+
+- The text of domains A and C, replaced by `mcp/`. `mcp/handbook-mapping.md` lists where each rule went and what changed.
+
 ## [1.1] - 2026-11-02
 
 The date is that of the handbook text. The repository files were added on 2026-11-04.
@@ -29,7 +49,7 @@ Changes made when the handbook moved from one HTML file to this repository. They
 - A few examples became generic, and the wording about where the change record lives follows the new file layout.
 - Section 0.1 now says that some rules are written for Windows and .NET, and that other platforms use an equivalent.
 - Subsections 6.4, 9.7, 19.3 and 20.3 had no text and now point at the rules that cover them.
-- Template T.1, the minimum list and section 25 now say "domain" for a profile, as the glossary does.
+- Template T.1, the minimum list and section 25 now use one term for a profile, as the glossary does.
 - SBOM is marked M+ in the playbooks and, with provenance, in section 26.1 and the release checklist template, as rule DEP-11 and section 23.3 already said.
 - The directory tree in section 2.6 now includes `docs/plan` and `docs/postmortems`, which rules DOC-11 and BUG-06 name.
 - Section 6.11 now points at rule DSK-08 for signing, because section 14.1 has no signing rule.

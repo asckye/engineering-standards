@@ -1,6 +1,6 @@
 # 发布清单：<X.Y.Z>
 
-> 模板：手册[任务手册的发布步骤](../handbook/general/00c-playbooks.md#play-release)、[26.1](../handbook/general/26-checklists.md#checklist-release)、[26.2](../handbook/general/26-checklists.md#checklist-real)、[23.3](../handbook/general/23-definition-of-done.md#dod-release) 和领域清单 [B.12](../handbook/domains/b-industrial-hmi.md#pb-checklist)、[D.1](../handbook/domains/d-desktop.md#pd-checklist)、[E.6](../handbook/domains/e-web.md#pe-checklist)、[F.1](../handbook/domains/f-mobile.md#pf-checklist)。发布说明用 [T.7](../handbook/appendix/t-templates.md#tpl-release)。`[M+]` 只对该等级及以上的项目。复制后删去不适用的小节、尖括号中的提示和本段。
+> 模板：通用规范[任务手册的发布步骤](../general/00c-playbooks.md#play-release)、[26.1](../general/26-checklists.md#checklist-release)、[26.2](../general/26-checklists.md#checklist-real)、[23.3](../general/23-definition-of-done.md#dod-release) 和项目类型的清单 [B.12](../hmi/README.md#pb-checklist)、[D.1](../desktop/README.md#pd-checklist)、[E.6](../web/README.md#pe-checklist)、[F.1](../mobile/README.md#pf-checklist)。发布说明用 [T.7](../general/appendix/t-templates.md#tpl-release)。`[M+]` 只对该等级及以上的项目。复制后删去不适用的小节、尖括号中的提示和本段。
 
 ## 步骤
 
@@ -34,7 +34,7 @@
 - [ ] 资产附 SHA-256（[M+] 加 SBOM 与来源证明）。
 - [ ] 维护者已确认；发布后更新交接与发布记录。
 
-## 领域 B：硬件在环 [M+]
+## 上位机：硬件在环 [M+]
 
 - [ ] 真实 PLC 或仿真 PLC 加实际网络拓扑；记录固件版本与接口数据块版本。
 - [ ] 拔网线、PLC 停机、重启上位机：状态显示、安全状态、重连、数据缺口记录都正确。
@@ -44,14 +44,14 @@
 - [ ] 时间同步漂移、时区与夏令时切换下的历史数据和报警时间戳。
 - [ ] 角色权限：每个角色只能做允许的操作；审计记录完整。
 
-## 领域 D：桌面
+## 桌面
 
 - [ ] 1024 × 640、200% 缩放、中英文、浅色/深色/高对比渲染检查通过。
 - [ ] 标准用户在干净机器上安装、首次运行、升级、回滚、卸载各一遍。
 - [ ] 单实例、崩溃处理、诊断包导出可用。
 - [ ] 签名与哈希齐全；SmartScreen 提示已在发布说明中说明（未签名时）。
 
-## 领域 E：Web
+## Web
 
 - [ ] OpenAPI 差异已评审；破坏性变化升版本。
 - [ ] Core Web Vitals 与体积预算通过；无障碍自动检查与键盘走查通过。
@@ -59,9 +59,30 @@
 - [ ] 迁移在 staging 演练；回滚步骤可用；备份最近一次恢复演练成功。
 - [ ] 仪表盘与告警覆盖新功能；功能开关有到期日。
 
-## 领域 F：移动
+## 移动
 
 - [ ] 设备矩阵上的冒烟测试通过；离线、弱网、权限被拒绝时的行为正确。
 - [ ] VoiceOver/TalkBack 与最大字号下走一遍主要流程。
 - [ ] 隐私标签、权限说明文字与实际一致；崩溃报告需同意。
 - [ ] 内部测试渠道验证通过；分阶段发布的比例和暂停条件已设定。
+
+## MCP
+
+- [ ] 实机核对清单已更新，未验证的行为写入发布说明（`VER-09`）。
+- [ ] 契约快照的差异逐项说明（`VER-02`）；采用 `VER-12` 时已运行 Agent 评测。
+
+## 视觉
+
+- [ ] 验收指标在真实产品和光照下测过，结果已记录。
+- [ ] 回归图像集通过，漏检率和误检率不高于门禁。
+- [ ] 离线回放能跑完整流程；相机断线和算法异常时的判定动作已实测。
+- [ ] 标定和配方可以备份、恢复，版本写入判定结果。
+- [ ] 浸泡测试通过，内存、句柄和丢帧计数平稳。
+
+## 大屏
+
+- [ ] 目标分辨率和拼接方式下显示正确，没有滚动条和裁切。
+- [ ] 断网、后端重启和数据过期时显示正确，恢复后不需要人操作。
+- [ ] 浸泡测试通过，内存和连接数平稳。
+- [ ] 真实屏幕和实际距离下走查通过。
+- [ ] 屏上内容按摆放场所核对过，展示端只读。
