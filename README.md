@@ -36,6 +36,8 @@
 
 通用规范和各文件夹各自标明版本和状态。版本规则见 [G-07](general/00-purpose.md#purpose-gov)，变更见 [CHANGELOG.md](CHANGELOG.md)。
 
+改动规范后运行 `python build-tools/check_standards.py`，它核对内部链接、规则编号、理由行、第 24 节、版本号和模板里的清单，并确认 MUST 没有比上一个标签放宽。每次推送时 CI 也会运行。
+
 ## 路线图
 
 - 通用规范下一版（计划中）：加入实测数据和按项目规模选用的清单。
@@ -48,6 +50,6 @@
 
 ## 许可
 
-Copyright © 2026 asckye。本仓库的文档以 [CC BY 4.0](LICENSE) 授权。今后如加入脚本，脚本以 MIT 许可证授权。
+Copyright © 2026 asckye。本仓库的文档以 [CC BY 4.0](LICENSE) 授权，`build-tools/` 里的脚本以 [MIT 许可证](build-tools/LICENSE)授权。
 
 引用或改编时请注明：《工程开发规范》，asckye，CC BY 4.0，并附仓库链接；改动过的内容要说明。

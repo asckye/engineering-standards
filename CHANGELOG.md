@@ -4,6 +4,10 @@ All notable changes to this repository are recorded here. The format follows [Ke
 
 ## [Unreleased]
 
+### Added
+
+- `build-tools/check_standards.py` checks internal links, rule ids, reason lines, section 24, version strings, the checklists copied into templates and line endings, and that no MUST was lowered since the last tag of the same major version. It has tests and runs in CI on every push to `main`. Scripts are under the MIT licence.
+
 ## [2.1] - 2026-11-05
 
 `general/`, `hmi/`, `desktop/`, `web/` and `mobile/` are 2.1; `mcp/`, `vision/` and `dashboard/` are drafts at 0.2. In the 2.1 parts, every MUST rule in 2.0 is still a MUST with the same id. In the drafts, whose levels may still change, `mcp/` lowers four MUST rules, listed under Changed. This is a minor version under rule G-07 because rules were added or raised. Three changes narrow what a 2.0 MUST covered and are listed under Changed: tier S, the real-target and pre-release test layers and `TST-05`, and site records and `SEC-22`. Each resolves a conflict or an unclear scope in the 2.0 text, so we do not treat them as lowering a MUST.
