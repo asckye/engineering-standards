@@ -11,8 +11,8 @@
 | 所有项目 | [general/](general/README.md)：代码规范、注释、易读易维护、错误处理、测试、Git、发布、AI 协作 | 2.0 |
 | MCP 服务 | [mcp/](mcp/README.md) + [desktop/](desktop/README.md) 的本机部分 | 草稿 0.2 |
 | 上位机 | [hmi/](hmi/README.md) + [desktop/](desktop/README.md) | 2.0 |
-| 视觉 | [vision/](vision/README.md) + [desktop/](desktop/README.md)，需要时加 [hmi/](hmi/README.md) | 草稿 0.1 |
-| 大屏 | [dashboard/](dashboard/README.md) + [web/](web/README.md) 或 [desktop/](desktop/README.md) | 草稿 0.1 |
+| 视觉 | [vision/](vision/README.md) + [desktop/](desktop/README.md)，需要时加 [hmi/](hmi/README.md) | 草稿 0.2 |
+| 大屏 | [dashboard/](dashboard/README.md) + [web/](web/README.md) 或 [desktop/](desktop/README.md) | 草稿 0.2 |
 | 桌面应用 | [desktop/](desktop/README.md) | 2.0 |
 | Web | [web/](web/README.md) | 2.0 |
 | 移动 App | [mobile/](mobile/README.md) | 2.0 |
@@ -40,7 +40,7 @@
 
 - 通用规范 2.1（计划中）：加入实测数据和按项目规模选用的清单。
 - MCP 规范：用一个新项目从零试用，再定 1.0。
-- 视觉、大屏：有项目用过后，再定哪些规则升为 MUST。
+- 视觉、大屏：各用一个新项目试用，按结果调整规则和级别，再定 1.0。
 
 ## 反馈
 

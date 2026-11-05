@@ -17,6 +17,16 @@ All notable changes to this repository are recorded here. The format follows [Ke
 - `TL-14` requires an object schema root without `oneOf`, `anyOf` or `allOf`, and `TL-15` keeps mutually exclusive parameters in the description with validation on the server.
 - `handbook-mapping.md` corrected against the 1.1 text, including level changes it did not state.
 - The status column in `README.md` now shows only the version, and the sentence about where the rules came from is gone.
+- `vision/` and `dashboard/` are now draft 0.2 and use the same approach: each file defines how levels are chosen, and a rule is MUST when breaking it directly has one of those consequences and no other MUST already prevents it. They were all SHOULD before. `vision/` has 32 MUST of 42 rules and `dashboard/` has 20 MUST of 28.
+- Rules in `vision/` that bundled an end with a means are split, and the means stay SHOULD: `VIS-32` and `VIS-37` to `VIS-42`, plus `DSH-26` in `dashboard/`.
+- New MUST rules in `vision/`: `VIS-35` (recipe matches the product, camera parameters read back), `VIS-36` (bypass needs permission, audit and a time limit) and `VIS-43` (production PC setup). `VIS-33` and `VIS-34` now require an OK-image policy and an alarm when the NG rate or score distribution moves. `VIS-24` stays SHOULD.
+- `VIS-11` no longer lets replayed results reach the PLC or the formal records, `VIS-20` covers a result that never arrives at the PLC, `VIS-27` stops judging after a count mismatch, `VIS-23` forbids retesting until a part passes, and `VIS-28` asks for a confidence bound on the escape rate.
+- `vision/README.md` states explicit exceptions to `P-04`, `SEC-03`, `ERR-08` and `IND-17` for writes at line speed, and a tier line.
+- New MUST rules in `dashboard/`: `DSH-24` (metric definitions), `DSH-25` (alarms during carousel), `DSH-27` (long-lived front ends reload) and `DSH-28` (mock data). `DSH-04` is now MUST. `DSH-08` takes the data time from the source, not from a cache, and keeps judging staleness during a disconnect. `DSH-15` no longer means leaving a machine unpatched, `DSH-19` covers credential renewal, and `DSH-10` requires one-way flow through an isolation zone only when the display is outside the production network.
+- `dashboard/README.md` lets a showroom screen treat `DSH-11`, `DSH-23`, `DSH-24` and `DSH-25` as SHOULD, and states exceptions for credentials and desktop heartbeats.
+- The release checklists of `vision/` and `dashboard/`, and `templates/release-checklist.md`, gained items for the new runtime rules.
+- Section 24 of `general/` says the runtime MUST rules of `vision/` and `dashboard/` are checked through their release checklists and the rest in review.
+- The roadmap in `README.md` now says each draft is tried on a new project before 1.0.
 
 ### Removed
 

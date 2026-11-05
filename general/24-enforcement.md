@@ -22,7 +22,7 @@
 | 硬件在环与实机清单 | IND-01–03、IND-05、IND-09、IND-14、IND-15、IND-17、IND-42、ENG-03、ENG-04、ENG-14、WEB-25 | 发布前 |
 | 仅评审（自动化候选） | G-04、FAST-04、BLD-01、DAT-06、PKG-04、P-01、P-04、P-06、P-09、P-12–P-14、P-22、Q-03、Q-17、CMT-04、BUG-02、BUG-04、BUG-05、REV-01、REV-05、REV-07、TST-01、GIT-03、AI-10–13、AI-17、CFG-03、CFG-06、WIN-13–15、I18N-03、DIAG-01、DIAG-04、ARC-04、ARC-07、ARC-12、ARC-17、SEC-19、IND-26–28、IND-32、IND-36、ENG-16、DSK-02、DSK-09、WEB-08、WEB-13、WEB-26、MOB-07、MOB-08、MOB-10、MOB-15 | 评审；按出错频率排期自动化 |
 
-[MCP 规范](../mcp/05-verification.md)其余 MUST 的验证方式见它的验证层。视觉和大屏还是草稿，没有 MUST。
+[MCP 规范](../mcp/05-verification.md)其余 MUST 的验证方式见它的验证层。[视觉](../vision/README.md)和[大屏](../dashboard/README.md)的 MUST：运行行为按各自的发布清单核对，设计和流程类的在评审中核对。
 
 ---
 

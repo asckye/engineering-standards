@@ -1,6 +1,6 @@
 # 发布清单：<X.Y.Z>
 
-> 模板：通用规范[任务手册的发布步骤](../general/00c-playbooks.md#play-release)、[26.1](../general/26-checklists.md#checklist-release)、[26.2](../general/26-checklists.md#checklist-real)、[23.3](../general/23-definition-of-done.md#dod-release) 和项目类型的清单 [B.12](../hmi/README.md#pb-checklist)、[D.1](../desktop/README.md#pd-checklist)、[E.6](../web/README.md#pe-checklist)、[F.1](../mobile/README.md#pf-checklist)。发布说明用 [T.7](../general/appendix/t-templates.md#tpl-release)。`[M+]` 只对该等级及以上的项目。复制后删去不适用的小节、尖括号中的提示和本段。
+> 模板：通用规范[任务手册的发布步骤](../general/00c-playbooks.md#play-release)、[26.1](../general/26-checklists.md#checklist-release)、[26.2](../general/26-checklists.md#checklist-real)、[23.3](../general/23-definition-of-done.md#dod-release) 和项目类型的清单 [B.12](../hmi/README.md#pb-checklist)、[D.1](../desktop/README.md#pd-checklist)、[E.6](../web/README.md#pe-checklist)、[F.1](../mobile/README.md#pf-checklist)、[视觉](../vision/README.md#vis-checklist)、[大屏](../dashboard/README.md#dsh-checklist)。发布说明用 [T.7](../general/appendix/t-templates.md#tpl-release)。`[M+]` 只对该等级及以上的项目。复制后删去不适用的小节、尖括号中的提示和本段。
 
 ## 步骤
 
@@ -73,16 +73,29 @@
 
 ## 视觉
 
-- [ ] 验收指标在真实产品和光照下测过，结果已记录。
+- [ ] 验收指标在真实产品和光照下测过，结果已记录；`VIS-03`、`VIS-28` 的评估已完成，样本量和置信度已记录。
 - [ ] 回归图像集通过，漏检率和误检率不高于门禁。
-- [ ] 离线回放能跑完整流程；相机断线和算法异常时的判定动作已实测。
+- [ ] 回放或仿真时不向 PLC 输出结果，不写正式记录；相机断线和算法异常时的判定动作已实测。
+- [ ] 视觉软件崩溃时，PLC 按事先定义的动作处理，已实测。
+- [ ] 配方和产品不一致时不判定；相机重连后参数读回核对；旁路有时限，旁路期间的产品标为未检测。
+- [ ] 漏触发和计数不一致已实测：按 `VIS-20` 处理，重新对齐后才恢复判定。
+- [ ] PLC 握手已实测：超时和写入中断时不重发，结果不会落到下一个产品。
+- [ ] 最坏负载下从触发到结果在预算内；超时和丢帧的判定动作已实测。
+- [ ] 磁盘将满和写入失败已实测；标准件核对可用，结果写入记录。
 - [ ] 标定和配方可以备份、恢复，版本写入判定结果。
+- [ ] 工控机的运行环境按部署文档核对过。
+- [ ] 使用模型时：保留图像集或影子运行通过，回滚已演练。
 - [ ] 浸泡测试通过，内存、句柄和丢帧计数平稳。
 
 ## 大屏
 
-- [ ] 目标分辨率和拼接方式下显示正确，没有滚动条和裁切。
+- [ ] 目标分辨率和拼接方式下显示正确，含超长名称和很大的数：没有滚动条和裁切，关键数字不压拼接缝。
 - [ ] 断网、后端重启和数据过期时显示正确，恢复后不需要人操作。
-- [ ] 浸泡测试通过，内存和连接数平稳。
+- [ ] 取数失败、没有数据和数据为零显示不同；画面冻结能被外部看门狗发现。
+- [ ] 断电重启、程序崩溃和系统弹窗后自动恢复，不需要人到现场；版本和运行状态可以远程查看。
+- [ ] 轮播时新告警看得到，告警持续时其他页面仍能显示。
+- [ ] 凭据撤销和到期时屏上显示取数失败，不显示登录页。
+- [ ] 指标和来源报表核对过班次和日切换。
+- [ ] 浸泡测试通过，内存、定时器、连接数和图表实例数平稳。
 - [ ] 真实屏幕和实际距离下走查通过。
 - [ ] 屏上内容按摆放场所核对过，展示端只读。
