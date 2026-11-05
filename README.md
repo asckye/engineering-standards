@@ -6,18 +6,18 @@
 
 先读[通用规范](general/README.md)，再加项目类型对应的文件夹：
 
-| 项目类型 | 读这些 | 成熟度 |
+| 项目类型 | 读这些 | 状态 |
 |---|---|---|
 | 所有项目 | [general/](general/README.md)：代码规范、注释、易读易维护、错误处理、测试、Git、发布、AI 协作 | 2.0 |
-| MCP 服务 | [mcp/](mcp/README.md) + [desktop/](desktop/README.md) 的本机部分 | 草稿 0.1，已对照两个项目 |
-| 上位机 | [hmi/](hmi/README.md) + [desktop/](desktop/README.md) | 2.0，未对照项目核对 |
-| 视觉 | [vision/](vision/README.md) + [desktop/](desktop/README.md)，需要时加 [hmi/](hmi/README.md) | 草稿 0.1，还没有项目验证 |
-| 大屏 | [dashboard/](dashboard/README.md) + [web/](web/README.md) 或 [desktop/](desktop/README.md) | 草稿 0.1，还没有项目验证 |
+| MCP 服务 | [mcp/](mcp/README.md) + [desktop/](desktop/README.md) 的本机部分 | 草稿 0.2 |
+| 上位机 | [hmi/](hmi/README.md) + [desktop/](desktop/README.md) | 2.0 |
+| 视觉 | [vision/](vision/README.md) + [desktop/](desktop/README.md)，需要时加 [hmi/](hmi/README.md) | 草稿 0.1 |
+| 大屏 | [dashboard/](dashboard/README.md) + [web/](web/README.md) 或 [desktop/](desktop/README.md) | 草稿 0.1 |
 | 桌面应用 | [desktop/](desktop/README.md) | 2.0 |
-| Web | [web/](web/README.md) | 2.0，未对照项目核对 |
-| 移动 App | [mobile/](mobile/README.md) | 2.0，未对照项目核对 |
+| Web | [web/](web/README.md) | 2.0 |
+| 移动 App | [mobile/](mobile/README.md) | 2.0 |
 
-通用规范、`mcp/` 和 `desktop/` 来自实际项目中采纳的决定；`hmi/`、`web/` 和 `mobile/` 主要按公开标准和通用实践整理。这些规范都还没有实测数据，也没有外部评审。
+这些规范都还没有实测数据，也没有外部评审。
 
 语言附录在 [general/languages/](general/README.md#languages)，填写用的模板在 [templates/](templates/)。
 

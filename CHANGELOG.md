@@ -4,6 +4,24 @@ All notable changes to this repository are recorded here. The format follows [Ke
 
 ## [Unreleased]
 
+### Changed
+
+- `mcp/` is now draft 0.2 and is designed as a standard that projects follow. A rule's level depends on what goes wrong when the rule is broken, as `mcp/README.md` now defines. A project that cannot comply registers a deviation. Levels may still change while the part is a draft.
+- Raised to MUST: `PRO-02`, `TL-05`, `TL-06`, `TL-08`, `TL-18`, `TL-26`, `TL-34`, `WS-05`, `WS-06`, `WS-12`, `WS-15`, `WS-25`, `WS-35`, `WS-37`, `WS-39`, `WS-41`, `WS-43`, `ENG-06`, `ENG-09`, `ENG-10`, `ENG-22` and `VER-05`.
+- Lowered: `VER-01` to SHOULD and `WS-40` to MAY. The next-step wording of `TL-31` moved to the new SHOULD rule `TL-43`.
+- New rules: `WS-44` and `ENG-26` (MUST), `PRO-24`, `TL-40`, `TL-41`, `TL-42` and `TL-43` (SHOULD).
+- `WS-15` and `WS-16` now limit the approval off-switch and throwaway projects to ordinary writes. Destructive, code-running, system and online-device operations, shared data and paths outside the root always need approval.
+- `PRO-12` says what a re-issued write returns, `PRO-13` says nothing more is sent after a cancel, and `WS-17` defines `partial` and `unknown` for batches.
+- Rules no longer offer alternatives or wording for services already published. How to adopt with published names or an older MCP revision is now in one place in `mcp/README.md`.
+- `mcp/README.md` lists the rules that are explicit exceptions to `general/` and `desktop/`.
+- `TL-14` requires an object schema root without `oneOf`, `anyOf` or `allOf`, and `TL-15` keeps mutually exclusive parameters in the description with validation on the server.
+- `handbook-mapping.md` corrected against the 1.1 text, including level changes it did not state.
+- The status column in `README.md` now shows only the version, and the sentence about where the rules came from is gone.
+
+### Removed
+
+- The labels in `mcp/` that recorded how far existing projects implemented each rule. `[规范]` stays, because it marks rules that come from the MCP specification.
+
 ## [2.0] - 2026-11-05
 
 First version meant for publication. `general/`, `hmi/`, `desktop/`, `web/` and `mobile/` are 2.0; `mcp/`, `vision/` and `dashboard/` are drafts at 0.1. The major version changes because domains A and C were replaced and the scope of some MUST rules narrowed.
