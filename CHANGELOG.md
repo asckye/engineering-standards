@@ -4,6 +4,10 @@ All notable changes to this repository are recorded here. The format follows [Ke
 
 ## [Unreleased]
 
+## [2.0] - 2026-11-05
+
+First version meant for publication. `general/`, `hmi/`, `desktop/`, `web/` and `mobile/` are 2.0; `mcp/`, `vision/` and `dashboard/` are drafts at 0.1. The major version changes because rules moved, and domains A and C were replaced.
+
 ### Added
 
 - Draft 0.1 of a dedicated MCP standard under `mcp/` for services that connect to engineering software and can write to real projects. It targets MCP 2026-07-28, marks the evidence behind each rule, and maps every rule from the earlier domains A and C.
@@ -19,6 +23,8 @@ All notable changes to this repository are recorded here. The format follows [Ke
 - Section 0.1 now says that the confirm-before-write and unknown-outcome rules apply to writes started by automation or AI and to writes to target software and devices, not to a user saving in their own interface.
 - SEC-19 now covers server-side secret stores as well as the Windows user store, and CFG-03 limits local network listening to software on a user's machine.
 - References now point at MCP 2026-07-28.
+- FAST-04 now applies when AI agents are used, so a team without them does not break a MUST.
+- Section 0.1 says an equivalent on another platform is not an exception and needs no ADR. Section 0.3 explains why rule numbers have gaps.
 
 ### Removed
 
@@ -43,7 +49,7 @@ Compared with handbook 1.0:
 - The merge gate target is about 15–20 minutes; a project may set a stricter one.
 - The enforcement table is rewritten around the MUST rules.
 
-Changes made when the handbook moved from one HTML file to this repository. They are part of this first published 1.1, not a separate release, and no rule id, level or tier changed:
+Changes made when the handbook moved from one HTML file to this repository. They are part of 1.1 as first added to this repository, not a separate release, and no rule id, level or tier changed:
 
 - The desktop token reference in the UI chapter now points at the tokens listed in that chapter.
 - A few examples became generic, and the wording about where the change record lives follows the new file layout.

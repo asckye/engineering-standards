@@ -2,7 +2,7 @@
 
 > **要点** TypeScript strict、OpenAPI 为契约、OWASP 为安全基线；性能预算和可观测性按等级。
 
-状态：1.1。
+状态：2.0。
 
 **同时采用：** [通用规范](../general/README.md)。
 

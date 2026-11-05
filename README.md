@@ -8,14 +8,16 @@
 
 | 项目类型 | 读这些 | 成熟度 |
 |---|---|---|
-| 所有项目 | [general/](general/README.md)：代码规范、注释、易读易维护、错误处理、测试、Git、发布、AI 协作 | 1.1 |
+| 所有项目 | [general/](general/README.md)：代码规范、注释、易读易维护、错误处理、测试、Git、发布、AI 协作 | 2.0 |
 | MCP 服务 | [mcp/](mcp/README.md) + [desktop/](desktop/README.md) 的本机部分 | 草稿 0.1，已对照两个项目 |
-| 上位机 | [hmi/](hmi/README.md) + [desktop/](desktop/README.md) | 1.1 |
+| 上位机 | [hmi/](hmi/README.md) + [desktop/](desktop/README.md) | 2.0 |
 | 视觉 | [vision/](vision/README.md) + [desktop/](desktop/README.md)，需要时加 [hmi/](hmi/README.md) | 草稿 0.1，还没有项目验证 |
 | 大屏 | [dashboard/](dashboard/README.md) + [web/](web/README.md) 或 [desktop/](desktop/README.md) | 草稿 0.1，还没有项目验证 |
-| 桌面应用 | [desktop/](desktop/README.md) | 1.1 |
-| Web | [web/](web/README.md) | 1.1 |
-| 移动 App | [mobile/](mobile/README.md) | 1.1 |
+| 桌面应用 | [desktop/](desktop/README.md) | 2.0 |
+| Web | [web/](web/README.md) | 2.0 |
+| 移动 App | [mobile/](mobile/README.md) | 2.0 |
+
+这些规范来自实际项目中采纳的决定，还没有实测数据，也没有外部评审。
 
 语言附录在 [general/languages/](general/README.md#languages)，填写用的模板在 [templates/](templates/)。
 
@@ -36,7 +38,7 @@
 
 ## 路线图
 
-- 通用规范 1.2（计划中）：加入实测数据和按项目规模选用的清单。
+- 通用规范 2.1（计划中）：加入实测数据和按项目规模选用的清单。
 - MCP 规范：用一个新项目从零试用，再定 1.0。
 - 视觉、大屏：有项目用过后，再定哪些规则升为 MUST。
 
