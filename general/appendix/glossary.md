@@ -21,7 +21,7 @@
 | 审计 | audit trail | `Audit` | 只追加的操作记录；与运行日志分开 |
 | 基线 | baseline | `Baseline` | 快照、警告存量等只由工具更新的参照 |
 | 门禁 | gate | `Gate` | 阻止合并或发布的检查集合；合并门、发布门 |
-| 夜间检查 | nightly | `Nightly` | 每日冷启动的完整检查 |
+| 完整检查 | full check | `FullCheck` | 冷启动、无缓存的完整检查，每晚运行，或发布前对要发布的提交运行 |
 | 台账 | ledger | 无 | 实机验证结果的记录 |
 | 等级 | tier | 无 | 项目等级 S、M、L |
 | 项目类型规范 | profile | 无 | 根目录按项目类型分的文件夹；“配置”只指 configuration |

@@ -3,7 +3,7 @@
 > 模板：[通用规范 T.2](../general/appendix/t-templates.md#tpl-adr)。复制后删去尖括号中的提示和本段。
 >
 > - **MUST** [G-04](../general/00-purpose.md#purpose-exceptions)：写明范围和到期条件。
-> - **SHOULD** G-05：ADR 由维护者采纳；AI 代理只能写“提议”状态的 ADR。
+> - **MUST** G-05：ADR 由维护者采纳；AI 代理只能写“提议”状态的 ADR。
 > - **SHOULD** [DOC-04](../general/20-documentation.md#docs-adr)：放在 `docs/adr/NNNN-<short-title>.md`，四位递增编号不复用；一页一个决定。
 > - **SHOULD** DOC-05：只追加；已采纳的不改写正文；决定改变时写新 ADR 取代旧的，两边互链；目录 README 列出全部 ADR。
 

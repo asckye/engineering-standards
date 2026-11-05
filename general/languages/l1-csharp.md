@@ -9,6 +9,7 @@
 | 资源与字符串 | `using` 声明；`Dispose` 幂等；`StringComparison` 与 `CultureInfo.InvariantCulture` 显式指定；字符串键字典指定比较器；System.Text.Json，选项缓存复用；XML 用 `DtdProcessing.Prohibit`、`XmlResolver = null`。 |
 | 打包 | SDK 风格工程；`global.json` 固定 SDK；`Directory.Packages.props` 中央版本；`packages.lock.json` 入库，CI 用 `RestoreLockedMode`；面向 net48 的工程不用需要运行时支持的语言特性。 |
 | 检查与格式化 | `AnalysisLevel=latest-recommended`、`EnforceCodeStyleInBuild=true`、新工程 `TreatWarningsAsErrors=true`；`.editorconfig` 定义命名与格式（IDE1006、IDE0055）；`GenerateDocumentationFile` + CS1591；`BannedApiAnalyzers`；`dotnet format --verify-no-changes`。 |
+| 安全 | 子进程用 `ProcessStartInfo.ArgumentList`（.NET Framework 没有这个属性，用集中的函数按 Windows 命令行规则转义后写入 `Arguments`），`UseShellExecute=false`（.NET Framework 默认是 true）（SEC-12）；本机凭据用 DPAPI CurrentUser 或 Windows 凭据管理器（SEC-19）；安全分析规则 CA2100、CA2300–CA2330、CA3001–CA3012、CA3075、CA3077、CA5350–CA5403 等设为警告（SEC-29）；依赖扫描用 `dotnet list package --vulnerable --include-transitive`，.NET 10 起也可以写 `dotnet package list`（SEC-30）。 |
 | 测试 | xUnit；快照用 Verify 一类工具（注意新版本的许可条款）；替身优先手写 fake；`FakeTimeProvider` 控制时间；测试名 `Method_Condition_Expected`。 |
 
 ---

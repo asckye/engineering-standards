@@ -8,6 +8,7 @@
 | 异步 | 不留悬空的 Promise（lint 规则 `no-floating-promises`）；用 `AbortController` 实现取消和超时；并发用有上限的批量，不无限 `Promise.all`。单线程不等于没有竞态：`await` 之后状态可能已经变了，要重新检查（CODE-17）。 |
 | 打包 | 只用一种包管理器；锁文件入库；精确版本（`save-exact`）；CI 用 `npm ci` 或 `pnpm install --frozen-lockfile`；`engines` 写明 Node 版本。 |
 | 检查与格式化 | ESLint + typescript-eslint（`strict-type-checked`）；Prettier 统一格式；公开 API 用 TSDoc，并用 jsdoc 规则检查。 |
+| 安全 | 子进程用 `execFile` 或 `spawn` 的参数列表，不开 `shell`；Windows 上的 `.bat`、`.cmd` 不直接启动，改为启动它背后的程序（SEC-12）；安全规则用 eslint-plugin-security 一类的插件，按规则选用（SEC-29）；依赖扫描用 `npm audit` 或 `pnpm audit`（SEC-30）。 |
 | 测试 | Vitest 或 Jest；组件用 Testing Library 按行为测试；端到端用 Playwright；网络用 MSW 一类的模拟，不访问真实服务；假定时器控制时间。 |
 
 ---
