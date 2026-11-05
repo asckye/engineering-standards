@@ -37,6 +37,9 @@
 | 恢复时间目标 | recovery time objective（RTO） | — | 故障后多久要恢复 |
 | 恢复点目标 | recovery point objective（RPO） | — | 恢复后最多丢失多长时间的数据 |
 | 退役 | retirement | — | 产品停止运行并收尾；和“停止支持”不同，后者只是不再修复 |
+| 个人数据 | personal data | — | 能识别到具体的人的信息，包括操作员账号、日志里的用户名和图像里拍到的人 |
+| 客户数据 | customer data | — | 客户的项目和未脱敏的现场数据 |
+| 匿名化 | anonymization | — | 处理后无法再识别到个人，也不能复原；假名化还能复原，仍算个人数据 |
 
 ---
 

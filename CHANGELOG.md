@@ -12,9 +12,15 @@ All notable changes to this repository are recorded here. The format follows [Ke
 - Playbooks for delivery, incidents and retirement, checklists 26.3 and 26.4, definition of done 23.4, templates `runbook.md` and `acceptance-record.md`, and a support policy line in the README and release note templates and in the release checklists.
 - Glossary terms for runbook, incident, alert, deployment rollback, FAT, SAT, RTO, RPO and retirement, and a references row for operations and delivery.
 - Section 24 of `general/` lists how the new MUST rules are checked.
+- Section 7 gains a data inventory with legal basis, retention and deletion, minimal collection and data classification (`DAT-08` to `DAT-11`), a definition of personal data and customer data, and a table of what applies depending on who holds the data. Section 6.12 covers cryptography (`SEC-35` to `SEC-42`). Sections 19.5 to 19.7 cover data sent to external models, products that call a model, and the tools and memory agents use (`AI-18` to `AI-27`). Section 3 gains concurrency rules (`CODE-15` to `CODE-20`), with `TST-12` for testing them and a line in each language annex.
+- These add 18 MUST rules: `DAT-08`, `DAT-10`, `SEC-35` to `SEC-39`, `SEC-41`, `AI-18`, `AI-21` to `AI-24`, `AI-26` and `CODE-15` to `CODE-18`. `DAT-08`, `DAT-10`, `SEC-41`, `AI-26` and `CODE-18` are for tier M and above; the others have no tier mark. An MCP service returning project content to a client the user configured is outside `AI-18` and `AI-21`, as section 19.5 and `mcp/README.md` say.
+- Playbooks, the review checklists, T.3, T.8, checklist 26.3, the acceptance record, section 24, glossary terms for personal data, customer data and anonymization, and references rows for cryptography and AI security follow these rules.
 
 ### Changed
 
+- Minimum list item 13 now also covers sending credentials and customer data to external models.
+- `MIG-05` and `DSK-07` now require the updater to check the publisher's signature as well as the hash, with the signing key kept off the update server. A hash fetched from the same channel does not stop an attacker who controls that channel.
+- `SEC-16` and `PRO-19` say constant-time comparison instead of fixed-length comparison, which was the wrong term.
 - Section 13.1 now counts a running service or production line stopped by the software as S1, and S1 response starts with recovery.
 - `mcp/` is now draft 0.2 and is designed as a standard that projects follow. A rule's level depends on what goes wrong when the rule is broken, as `mcp/README.md` now defines. A project that cannot comply registers a deviation. Levels may still change while the part is a draft.
 - Raised to MUST: `PRO-02`, `TL-05`, `TL-06`, `TL-08`, `TL-18`, `TL-26`, `TL-34`, `WS-05`, `WS-06`, `WS-12`, `WS-15`, `WS-25`, `WS-35`, `WS-37`, `WS-39`, `WS-41`, `WS-43`, `ENG-06`, `ENG-09`, `ENG-10`, `ENG-22` and `VER-05`.

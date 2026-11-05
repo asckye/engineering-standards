@@ -7,13 +7,13 @@
 1. 定等级（S/M/L）和项目类型，读对应文件夹的规范，写进 README（[T.1](appendix/t-templates.md#tpl-readme)）。
 2. 按黄金路径建骨架、构建入口、锁文件、分析器和格式化配置（[★ 黄金路径](00b-golden-path.md#golden)）。
 3. 建合并门命令和 CI，让第一条测试在两分钟内跑完（[★ 快速交付](00d-fast-delivery.md#fast)）。
-4. 写代理说明（[T.8](appendix/t-templates.md#tpl-agents)），复制术语表（[附录](appendix/glossary.md#glossary)）。
+4. 写代理说明（[T.8](appendix/t-templates.md#tpl-agents)），复制术语表（[附录](appendix/glossary.md#glossary)）；[M+] 写明允许用的 AI 服务（AI-19）。
 5. [M+] 写 ADR 0001“采用本规范”、`SECURITY.md`、`THIRD-PARTY-NOTICES`。
 6. 用“新增功能”手册做第一个功能。
 
 ## <a id="play-feature"></a>新增功能
 
-1. 写需求与验收标准（[18.2](18-process-review-git.md#review-req)）。
+1. 写需求与验收标准（[18.2](18-process-review-git.md#review-req)）；[M+] 涉及个人数据时更新数据清单（DAT-08）。
 2. L2 且 [M+]：一页设计说明，维护者批准（[T.3](appendix/t-templates.md#tpl-rfc)）。
 3. 拆成可独立合并的任务，每个写任务说明（[T.4](appendix/t-templates.md#tpl-task)）。
 4. 先把验收标准写成测试，再实现；只在边界校验（P-21）。
@@ -91,7 +91,7 @@
 ## <a id="play-onboard"></a>新成员或新代理入门
 
 1. 读最小必做清单、黄金路径和本手册（约 15 分钟）。
-2. 读项目的代理说明、交接文档和术语表。
+2. 读项目的代理说明、交接文档和术语表；代理在隔离的环境里运行（AI-20），真实凭据和客户数据不发给外部模型（AI-18）。
 3. 本机跑一次构建和合并门，确认环境可用。
 4. 代理：只接收按 T.4 写的任务说明，遵守 [19.4](19-ai.md#ai-machine) 的开发机规则。
 5. 第一个任务选 L1（小修复或补测试），走完整的评审与合并。
