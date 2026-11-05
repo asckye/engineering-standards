@@ -8,7 +8,7 @@
 
 | 项目类型 | 读这些 | 状态 |
 |---|---|---|
-| 所有项目 | [general/](general/README.md)：代码规范、注释、易读易维护、错误处理、测试、Git、发布、AI 协作 | 2.0 |
+| 所有项目 | [general/](general/README.md)：代码规范、注释、易读易维护、错误处理、测试、Git、发布、验收交付、运行运维、退役、AI 协作 | 2.0 |
 | MCP 服务 | [mcp/](mcp/README.md) + [desktop/](desktop/README.md) 的本机部分 | 草稿 0.2 |
 | 上位机 | [hmi/](hmi/README.md) + [desktop/](desktop/README.md) | 2.0 |
 | 视觉 | [vision/](vision/README.md) + [desktop/](desktop/README.md)，需要时加 [hmi/](hmi/README.md) | 草稿 0.2 |

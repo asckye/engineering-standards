@@ -28,6 +28,15 @@
 | 配置 | configuration | `Options`、`Config` | 启动时读取的设置来源（第 8 节） |
 | 设置 | settings | `Settings` | 用户可改的选项 |
 | 报警确认 | acknowledge | `Acknowledge` | 操作员确认报警；不与“确认”混用 |
+| 运行手册 | runbook | — | 启动、停止、故障处置和恢复的步骤文档 |
+| 事故 | incident | — | 已经影响用户或现场的问题；级别按 13.1 |
+| 告警 | alert | — | 发给运行负责人的通知；不与操作员的“报警”混用 |
+| 回退 | rollback（部署） | — | 退回上一个版本或系统；不同于撤销未提交写入的“回滚” |
+| 工厂验收 | factory acceptance test（FAT） | — | 出厂前用真实控制器或仿真核对功能 |
+| 现场验收 | site acceptance test（SAT） | — | 在现场核对系统已按规范和安装要求安装，并接真实设备核对。IEC 62381 把子系统联调单列为现场集成测试（SIT），逐点回路检查见 IEC 62382；本规范的现场验收包含这些部分 |
+| 恢复时间目标 | recovery time objective（RTO） | — | 故障后多久要恢复 |
+| 恢复点目标 | recovery point objective（RPO） | — | 恢复后最多丢失多长时间的数据 |
+| 退役 | retirement | — | 产品停止运行并收尾；和“停止支持”不同，后者只是不再修复 |
 
 ---
 

@@ -1,6 +1,6 @@
 # 通用规范
 
-所有项目都适用的规范：代码规范、注释、易读易维护、错误处理、安全、测试、依赖、构建与发布、开发流程和 AI 协作。每类项目专属的规则在根目录各自的文件夹，见 [0.1](00-purpose.md#purpose-parts)。代码质量第一，流程按项目规模和风险取舍。
+所有项目都适用的规范：代码规范、注释、易读易维护、错误处理、安全、测试、依赖、构建与发布、验收交付、运行运维、退役、开发流程和 AI 协作。每类项目专属的规则在根目录各自的文件夹，见 [0.1](00-purpose.md#purpose-parts)。代码质量第一，流程按项目规模和风险取舍。
 
 版本 2.0 · 2026-11-05 · [最小必做清单](00a-minimum.md)约 3 分钟；加上黄金路径、任务手册与快速交付约 15 分钟。
 
@@ -38,6 +38,9 @@
 - [24 让规则可执行](24-enforcement.md)
 - [25 在新项目中采用](25-adoption.md)
 - [26 通用检查清单](26-checklists.md)
+- [27 验收与交付](27-acceptance-delivery.md)
+- [28 运行与运维](28-operations.md)
+- [29 支持期与退役](29-support-retirement.md)
 
 ## <a id="languages"></a>语言附录
 
@@ -58,6 +61,7 @@
 
 | 前缀 | 文件 |
 |---|---|
+| `ACC` | [general/27-acceptance-delivery.md](27-acceptance-delivery.md) |
 | `AI` | [general/19-ai.md](19-ai.md) |
 | `ARC` | [general/02-architecture.md](02-architecture.md) |
 | `BLD` | [general/15-build-release.md](15-build-release.md) |
@@ -73,6 +77,7 @@
 | `DSK` | [desktop/README.md](../desktop/README.md) |
 | `ENF` | [general/24-enforcement.md](24-enforcement.md) |
 | `ENG` | [mcp/04-engineering-adapters.md](../mcp/04-engineering-adapters.md) |
+| `EOL` | [general/29-support-retirement.md](29-support-retirement.md) |
 | `ERR` | [general/05-errors.md](05-errors.md) |
 | `FAST` | [general/00d-fast-delivery.md](00d-fast-delivery.md) |
 | `G` | [general/00-purpose.md](00-purpose.md)、[general/appendix/glossary.md](appendix/glossary.md) |
@@ -81,6 +86,7 @@
 | `IND` | [hmi/README.md](../hmi/README.md) |
 | `MIG` | [desktop/packaging.md](../desktop/packaging.md)、[general/17-compatibility.md](17-compatibility.md) |
 | `MOB` | [mobile/README.md](../mobile/README.md) |
+| `OPS` | [general/28-operations.md](28-operations.md) |
 | `P` | [general/01-principles.md](01-principles.md) |
 | `PERF` | [general/11-performance.md](11-performance.md) |
 | `PKG` | [desktop/packaging.md](../desktop/packaging.md)、[general/15-build-release.md](15-build-release.md) |

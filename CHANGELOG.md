@@ -4,8 +4,18 @@ All notable changes to this repository are recorded here. The format follows [Ke
 
 ## [Unreleased]
 
+### Added
+
+- Three sections in `general/` that carry the lifecycle past release: 27 on acceptance and delivery (`ACC`), 28 on operations (`OPS`) and 29 on support periods and retirement (`EOL`). Section 18.1 now continues to delivery, running and retirement. Section 28 says which rules apply depending on who runs the software, and that AI agents hold no write access to production or site equipment.
+- `hmi/` B.13 on factory and site acceptance (`IND-43` to `IND-47`), with a pointer from `vision/`.
+- New MUST rules: 6 in `ACC`, 15 in `OPS` (`OPS-14` is tier L only), 6 in `EOL`, and `IND-44` to `IND-46` (`IND-45` applies at every tier). The others are for tier M and above, and public releases with no recipient are outside section 27.
+- Playbooks for delivery, incidents and retirement, checklists 26.3 and 26.4, definition of done 23.4, templates `runbook.md` and `acceptance-record.md`, and a support policy line in the README and release note templates and in the release checklists.
+- Glossary terms for runbook, incident, alert, deployment rollback, FAT, SAT, RTO, RPO and retirement, and a references row for operations and delivery.
+- Section 24 of `general/` lists how the new MUST rules are checked.
+
 ### Changed
 
+- Section 13.1 now counts a running service or production line stopped by the software as S1, and S1 response starts with recovery.
 - `mcp/` is now draft 0.2 and is designed as a standard that projects follow. A rule's level depends on what goes wrong when the rule is broken, as `mcp/README.md` now defines. A project that cannot comply registers a deviation. Levels may still change while the part is a draft.
 - Raised to MUST: `PRO-02`, `TL-05`, `TL-06`, `TL-08`, `TL-18`, `TL-26`, `TL-34`, `WS-05`, `WS-06`, `WS-12`, `WS-15`, `WS-25`, `WS-35`, `WS-37`, `WS-39`, `WS-41`, `WS-43`, `ENG-06`, `ENG-09`, `ENG-10`, `ENG-22` and `VER-05`.
 - Lowered: `VER-01` to SHOULD and `WS-40` to MAY. The next-step wording of `TL-31` moved to the new SHOULD rule `TL-43`.

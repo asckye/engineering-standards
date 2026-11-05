@@ -10,6 +10,8 @@
 
 ## 支持矩阵
 | 目标版本 | 状态 |  已验证 / 已构建未验证 / 不支持
+## 支持政策
+<哪些版本还在支持，修什么，支持到什么时候（EOL-01）>
 ## 安装
 <按用户安装的步骤；校验 SHA-256>
 ## 快速开始
@@ -111,6 +113,8 @@
 <migration steps; breaking changes with the generated mapping table>
 ## Supported versions
 <verified / built but not verified / unsupported>
+## Support status
+<support status of this release; link to the support policy in the README; any end-of-support notice>
 ## Known limits
 ## Not verified on a real target
 1. <item generated from the ledger>
