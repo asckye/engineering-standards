@@ -63,7 +63,7 @@
 src/<Product>.Contracts  .Core  .Host  .Adapters.<X>  .Ui
 tests/<Product>.<Component>.Tests
 build-tools/   reference/   schemas/   manifest/（生成）
-docs/{architecture,adr,standards,process,status,design,templates,guides,reference}
+docs/{architecture,adr,standards,plan,process,status,design,templates,guides,reference,postmortems}
 third_party/（原样保留，含许可证）
 ```
 

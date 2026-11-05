@@ -27,3 +27,9 @@ Changes made when the handbook moved from one HTML file to this repository. They
 
 - The desktop token reference in the UI chapter now points at the tokens listed in that chapter.
 - A few examples became generic, and the wording about where the change record lives follows the new file layout.
+- Section 0.1 now says that some rules are written for Windows and .NET, and that other platforms use an equivalent.
+- Subsections 6.4, 9.7, 19.3 and 20.3 had no text and now point at the rules that cover them.
+- Template T.1, the minimum list and section 25 now say "domain" for a profile, as the glossary does.
+- SBOM is marked M+ in the playbooks and, with provenance, in section 26.1 and the release checklist template, as rule DEP-11 and section 23.3 already said.
+- The directory tree in section 2.6 now includes `docs/plan` and `docs/postmortems`, which rules DOC-11 and BUG-06 name.
+- Section 6.11 now points at rule DSK-08 for signing, because section 14.1 has no signing rule.

@@ -35,6 +35,8 @@
 
 ## <a id="windows-env"></a>9.7 环境变量与 PATH
 
+规则见 [`CFG-06`](08-configuration.md#config) 和 [`AI-12`](19-ai.md#ai-machine)。
+
 ---
 
 [← 上一节：8 配置与环境](08-configuration.md) · [目录](../README.md) · [下一节：10 国际化与本地化 →](10-i18n.md)

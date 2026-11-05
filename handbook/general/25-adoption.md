@@ -7,7 +7,7 @@
 3. 在 `build-tools/` 建唯一入口，至少提供 `build`、`test`、`check`（合并门）、`package`。
 4. 加入执行机制（24 节表格中本等级需要的行）：架构测试、仓库检查、密钥扫描、套件注册表、PR 模板。
 5. 写 `CHANGELOG.md`、`SECURITY.md` [M+]、`THIRD-PARTY-NOTICES`，以及 ADR 0001“采用工程开发规范 1.1 与领域 X”。
-6. 写简短的代理说明文件（模板 [T.8](../appendix/t-templates.md#tpl-agents)），只放规范版本、等级、配置和项目特有的规则；复制术语表并补充领域术语。
+6. 写简短的代理说明文件（模板 [T.8](../appendix/t-templates.md#tpl-agents)），只放规范版本、等级、领域和项目特有的规则；复制术语表并补充领域术语。
 
 ---
 

@@ -14,6 +14,8 @@
 
 ## <a id="docs-generated"></a>20.3 生成文档
 
+规则见 [`P-26`](01-principles.md#principles-truth)。
+
 ## <a id="docs-style"></a>20.4 写作
 
 - **SHOULD** `DOC-08` 按 Microsoft Writing Style Guide：先结论和下一步，短句，常用词；中文用“选择”而不是“点击”，用“你”而不是“您”；中英文与数字之间空一格。

@@ -4,7 +4,7 @@
 
 ## 这是什么
 
-- [手册](handbook/README.md)：项目通用部分（第 0–26 节）对任何语言和技术栈有效；领域规范 A–F（MCP 服务、上位机、工程软件自动化、桌面、Web、移动）和语言附录 L1–L3（C#/.NET、TypeScript/JavaScript、Python）按需采用。
+- [手册](handbook/README.md)：项目通用部分（第 0–26 节）对任何语言和技术栈有效，其中部分规则按 Windows/.NET 写成，其他平台用等效做法（见 [0.1](handbook/general/00-purpose.md#purpose-parts)）；领域规范 A–F（MCP 服务、上位机、工程软件自动化、桌面、Web、移动）和语言附录 L1–L3（C#/.NET、TypeScript/JavaScript、Python）按需采用。
 - [模板](templates/)：任务说明、架构决策记录（ADR）、评审清单、完成定义、发布清单和项目采用文件，复制后填写。
 
 ## 给谁用
