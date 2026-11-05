@@ -1,12 +1,12 @@
 # Changelog
 
-All notable changes to this repository are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version numbers follow the handbook's own policy (rule G-07).
+All notable changes to this repository are recorded here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version numbers follow rule G-07.
 
 ## [Unreleased]
 
 ## [2.0] - 2026-11-05
 
-First version meant for publication. `general/`, `hmi/`, `desktop/`, `web/` and `mobile/` are 2.0; `mcp/`, `vision/` and `dashboard/` are drafts at 0.1. The major version changes because rules moved, and domains A and C were replaced.
+First version meant for publication. `general/`, `hmi/`, `desktop/`, `web/` and `mobile/` are 2.0; `mcp/`, `vision/` and `dashboard/` are drafts at 0.1. The major version changes because domains A and C were replaced and the scope of some MUST rules narrowed.
 
 ### Added
 
@@ -16,7 +16,7 @@ First version meant for publication. `general/`, `hmi/`, `desktop/`, `web/` and 
 
 ### Changed
 
-- The repository is now one `general/` folder for all projects plus one folder per project type: `mcp/`, `hmi/`, `vision/`, `dashboard/`, `desktop/`, `web/` and `mobile/`. Rule ids do not change.
+- The repository is now one `general/` folder for all projects plus one folder per project type: `mcp/`, `hmi/`, `vision/`, `dashboard/`, `desktop/`, `web/` and `mobile/`. Rules that moved keep their ids; the former `MCP-` and `VND-` rules have new ids in `mcp/`.
 - Windows, packaging, diagnostics and the desktop UI values moved from the general part to `desktop/`, along with the local pipe and HTTP rules, DAT-02, DAT-03, DAT-05, DAT-06, SEC-26, CFG-04 and MIG-05. They assumed software on the user's machine and conflicted with web projects.
 - WIN-12, WIN-14, PKG-07 and PKG-08 moved the other way, into `general/`, because every project needs them.
 - Project-type rules now take precedence over the general part when the two conflict, but they do not loosen a MUST elsewhere unless they say so.

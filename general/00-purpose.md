@@ -7,7 +7,7 @@
 | 部分 | 文件夹 | 何时采用 |
 |---|---|---|
 | 通用规范 | [general/](README.md) | 全部项目 |
-| MCP 服务 | [mcp/](../mcp/README.md) | 通过 MCP 向 AI 客户端提供工具；其中[工程软件适配层](../mcp/04-engineering-adapters.md)也用于经厂商 API（COM 或 .NET）驱动另一款工程软件的工具 |
+| MCP 服务 | [mcp/](../mcp/README.md) | 通过 MCP 向 AI 客户端提供工具（草稿）；其中[工程软件适配层](../mcp/04-engineering-adapters.md)也用于经厂商 API（COM 或 .NET）驱动另一款工程软件的工具 |
 | 上位机 | [hmi/](../hmi/README.md) | 与 PLC、仪表、驱动通信，供操作员监视和操作 |
 | 视觉 | [vision/](../vision/README.md) | 用工业相机做检测、测量、定位或识别（草稿） |
 | 大屏 | [dashboard/](../dashboard/README.md) | 长期显示数据的大屏和看板（草稿） |

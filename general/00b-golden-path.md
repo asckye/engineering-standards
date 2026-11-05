@@ -22,7 +22,7 @@
 | 类型 | 默认栈 | 额外的骨架 | 交付 |
 |---|---|---|---|
 | CLI 或库 | .NET 或 Python | `src/`、`tests/`、`build-tools/`；命令行输出一行 JSON 加退出码 | 按用户的 zip 或包仓库，附 SHA-256 |
-| MCP 服务（`mcp/`） | .NET + 官方 MCP SDK，stdio 优先 | Contracts、Host、Adapters、worker 进程；`reference/` 示例源数据；契约快照 | 按用户的 zip；客户端配置写入带备份 |
+| MCP 服务（`mcp/`，草稿） | .NET + 官方 MCP SDK，stdio 优先 | Contracts、Host、Adapters、worker 进程；`reference/` 示例源数据；契约快照 | 按用户的 zip；客户端配置写入带备份 |
 | 上位机（`hmi/`） | .NET + WPF；通信库按 DEP-02 选定并写 ADR | 每种协议一个适配器；设备模拟器；变量配置 schema | 离线安装包；配置备份与恢复 |
 | 桌面应用（`desktop/`） | .NET + WPF（或 WinUI） | Ui 工程（MVVM）、设计 token 资源、渲染测试 | 按用户安装与更新，签名 [M+] |
 | Web（`web/`） | TypeScript 前端 + .NET 或 Node 后端 | `apps/web`、`apps/api`、`openapi/`、`migrations/`、`infra/` | 容器镜像，dev/staging/prod 晋升 |

@@ -8,7 +8,7 @@
 
 ## 目录
 
-第 9 节（Windows 平台）、第 16 节（打包与安装）和第 22 节（诊断与支持）在 [desktop/](../desktop/README.md)，A 和 C 领域由 [mcp/](../mcp/README.md) 取代，其余编号不变。
+第 9 节（Windows 平台）、第 16 节（打包与安装）和第 22 节（诊断与支持）在 [desktop/](../desktop/README.md)，原来的 MCP 和厂商 API 规则由 [mcp/](../mcp/README.md) 取代，其余编号不变。
 
 - [0 目的、等级与读法](00-purpose.md)
 - [★ 最小必做清单](00a-minimum.md)

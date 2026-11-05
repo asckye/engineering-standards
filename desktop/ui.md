@@ -2,7 +2,7 @@
 
 > **要点** [第 21 节](../general/21-ui.md)的原则和规则对所有带界面的项目有效。这里是按桌面写成的值和规则，用于桌面应用和上位机。
 
-## <a id="ui-token-values"></a>21.2 Token 参考值
+## <a id="ui-token-values"></a>Token 参考值
 
 | 类别 | Token（值） |
 |---|---|
@@ -34,7 +34,7 @@
 | `footnote` | 12/17 | 400 | 注释、快捷键提示；最小的可读文字 |
 | `mono` / `mono-small` | 13/18 · 12/17 | 400 | 技术标识 |
 
-## <a id="ui-color-values"></a>21.5 颜色 Token
+## <a id="ui-color-values"></a>颜色 Token
 
 | Token | 浅色 | 深色 | 高对比 | 用途 |
 |---|---|---|---|---|

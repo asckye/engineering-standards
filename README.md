@@ -10,14 +10,14 @@
 |---|---|---|
 | 所有项目 | [general/](general/README.md)：代码规范、注释、易读易维护、错误处理、测试、Git、发布、AI 协作 | 2.0 |
 | MCP 服务 | [mcp/](mcp/README.md) + [desktop/](desktop/README.md) 的本机部分 | 草稿 0.1，已对照两个项目 |
-| 上位机 | [hmi/](hmi/README.md) + [desktop/](desktop/README.md) | 2.0 |
+| 上位机 | [hmi/](hmi/README.md) + [desktop/](desktop/README.md) | 2.0，未对照项目核对 |
 | 视觉 | [vision/](vision/README.md) + [desktop/](desktop/README.md)，需要时加 [hmi/](hmi/README.md) | 草稿 0.1，还没有项目验证 |
 | 大屏 | [dashboard/](dashboard/README.md) + [web/](web/README.md) 或 [desktop/](desktop/README.md) | 草稿 0.1，还没有项目验证 |
 | 桌面应用 | [desktop/](desktop/README.md) | 2.0 |
-| Web | [web/](web/README.md) | 2.0 |
-| 移动 App | [mobile/](mobile/README.md) | 2.0 |
+| Web | [web/](web/README.md) | 2.0，未对照项目核对 |
+| 移动 App | [mobile/](mobile/README.md) | 2.0，未对照项目核对 |
 
-这些规范来自实际项目中采纳的决定，还没有实测数据，也没有外部评审。
+通用规范、`mcp/` 和 `desktop/` 来自实际项目中采纳的决定；`hmi/`、`web/` 和 `mobile/` 主要按公开标准和通用实践整理。这些规范都还没有实测数据，也没有外部评审。
 
 语言附录在 [general/languages/](general/README.md#languages)，填写用的模板在 [templates/](templates/)。
 
@@ -42,6 +42,12 @@
 - MCP 规范：用一个新项目从零试用，再定 1.0。
 - 视觉、大屏：有项目用过后，再定哪些规则升为 MUST。
 
+## 反馈
+
+问题和建议请提 [GitHub Issue](https://github.com/asckye/engineering-standards/issues)。
+
 ## 许可
 
 Copyright © 2026 asckye。本仓库的文档以 [CC BY 4.0](LICENSE) 授权。今后如加入脚本，脚本以 MIT 许可证授权。
+
+引用或改编时请注明：《工程开发规范》，asckye，CC BY 4.0，并附仓库链接；改动过的内容要说明。
