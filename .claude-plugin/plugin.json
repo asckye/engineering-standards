@@ -1,0 +1,23 @@
+{
+  "name": "engineering-standards",
+  "displayName": "Engineering Standards",
+  "description": "Engineering standards as Agent Skills: rules with ids and levels for any project, plus MCP servers, HMI, machine vision, dashboards, desktop, web and mobile apps.",
+  "author": {
+    "name": "asckye",
+    "url": "https://github.com/asckye"
+  },
+  "homepage": "https://github.com/asckye/engineering-standards",
+  "repository": "https://github.com/asckye/engineering-standards",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "engineering-standards",
+    "coding-standards",
+    "mcp",
+    "hmi",
+    "machine-vision",
+    "dashboard",
+    "desktop",
+    "web",
+    "mobile"
+  ]
+}

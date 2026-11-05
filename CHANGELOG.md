@@ -6,7 +6,15 @@ All notable changes to this repository are recorded here. The format follows [Ke
 
 ### Added
 
-- `build-tools/check_standards.py` checks internal links, rule ids, reason lines, section 24, version strings, the checklists copied into templates and line endings, and that no MUST was lowered since the last tag of the same major version. It has tests and runs in CI on every push to `main`. Scripts are under the MIT licence.
+- The standard is now a set of Agent Skills and a Claude Code plugin. There is one skill per part, each with a `SKILL.md` that holds a task table saying which file to read, and the rules stay in that skill's `references/`.
+- A minimum list in the `SKILL.md` of each project type, with the MUST rules that prevent the worst failures for that kind of project. It is an entry point and changes no level.
+- `evals/`: test cases for the skills, in the layout `claude plugin eval` reads.
+- `build-tools/check_standards.py` checks internal links, rule ids, reason lines, section 24, version strings, the checklists copied into templates, the skills and plugin manifests, and line endings, and that no MUST was lowered since the last tag of the same major version. It has tests and runs in CI on every push to `main`. Scripts are under the MIT licence.
+
+### Changed
+
+- Files moved: `general/` to `skills/general-engineering-standard/references/`, `templates/` to its `assets/`, and each project-type folder to `skills/<skill>/references/`. A part's `README.md` is now `rules.md`, or `overview.md` for MCP and `contents.md` for the general part. `mcp/templates/` moved to that skill's `assets/`, and `general/00a-minimum.md` is now the general `SKILL.md`. Rule ids, rule text and levels did not change.
+- Small tools have their own shape in the golden path and the new-project playbook: one source file, one test file and a README. For an S-tier tool only the maintainer uses and does not publish, section 0.2 gives two conditional exceptions: `DOC-06` when there are no other users, and `P-14` when there are no logs, child processes, plugins or communication layers. This narrows two MUST rules for those tools only, so under G-07 it needs a new major version.
 
 ## [2.1] - 2026-11-05
 

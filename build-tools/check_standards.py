@@ -2,42 +2,59 @@
 """Check the standards repository.
 
 Checks internal links, rule ids, reason lines, section 24, version strings, the
-checklists copied into templates, line endings, and that no MUST was lowered
-since the last tag of the same major version (rule G-07).
+checklists copied into templates, the skills and plugin manifests, line endings,
+and that no MUST was lowered since the last tag of the same major version (rule G-07).
 
 Usage: python build-tools/check_standards.py [--root PATH]
 Exit code 0 when clean, 1 when a problem is found.
 """
 import argparse
+import json
 import re
 import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-RELEASED_PARTS = ["general", "desktop", "hmi", "web", "mobile"]
-DRAFT_PARTS = ["mcp", "vision", "dashboard"]
+GENERAL = "skills/general-engineering-standard"
+# Skill folder: its row in the root README, and the file with its status line.
+RELEASED_PARTS = {
+    "general-engineering-standard": ("所有项目", "references/contents.md"),
+    "hmi-standard": ("上位机", "references/rules.md"),
+    "desktop-app-standard": ("桌面应用", "references/rules.md"),
+    "web-app-standard": ("Web", "references/rules.md"),
+    "mobile-app-standard": ("移动 App", "references/rules.md"),
+}
+DRAFT_PARTS = {
+    "mcp-server-standard": ("MCP 服务", "references/overview.md"),
+    "machine-vision-standard": ("视觉", "references/rules.md"),
+    "dashboard-standard": ("大屏", "references/rules.md"),
+}
+# Where the released parts lived in tags older than the skills layout.
+OLD_RELEASED_FOLDERS = {"general", "desktop", "hmi", "web", "mobile"}
 # Files that describe past states, so they may name rules that no longer exist.
-HISTORY_FILES = {"CHANGELOG.md", "general/appendix/changelog.md", "mcp/handbook-mapping.md"}
+HISTORY_FILES = {"CHANGELOG.md", f"{GENERAL}/references/appendix/changelog.md", "skills/mcp-server-standard/references/handbook-mapping.md"}
 # Looks like a rule id but is not one: the elliptic curve name.
 NOT_RULE_IDS = {"P-256"}
 # Checklists kept in the standard and copied into a template.
+RELEASE_TEMPLATE = f"{GENERAL}/assets/release-checklist.md"
+DONE_TEMPLATE = f"{GENERAL}/assets/definition-of-done.md"
 TEMPLATE_COPIES = [
-    ("general/26-checklists.md", "checklist-release", "templates/release-checklist.md", "发布核对"),
-    ("general/26-checklists.md", "checklist-real", "templates/release-checklist.md", "实机验证"),
-    ("hmi/README.md", "pb-checklist", "templates/release-checklist.md", "上位机：硬件在环 [M+]"),
-    ("desktop/README.md", "pd-checklist", "templates/release-checklist.md", "桌面"),
-    ("web/README.md", "pe-checklist", "templates/release-checklist.md", "Web"),
-    ("mobile/README.md", "pf-checklist", "templates/release-checklist.md", "移动"),
-    ("vision/README.md", "vis-checklist", "templates/release-checklist.md", "视觉"),
-    ("dashboard/README.md", "dsh-checklist", "templates/release-checklist.md", "大屏"),
-    ("general/23-definition-of-done.md", "dod-task", "templates/definition-of-done.md", "任务完成"),
-    ("general/23-definition-of-done.md", "dod-merge", "templates/definition-of-done.md", "合并完成"),
-    ("general/23-definition-of-done.md", "dod-release", "templates/definition-of-done.md", "发布完成"),
-    ("general/23-definition-of-done.md", "dod-delivery", "templates/definition-of-done.md", "交付完成 [M+]"),
+    (f"{GENERAL}/references/26-checklists.md", "checklist-release", RELEASE_TEMPLATE, "发布核对"),
+    (f"{GENERAL}/references/26-checklists.md", "checklist-real", RELEASE_TEMPLATE, "实机验证"),
+    ("skills/hmi-standard/references/rules.md", "pb-checklist", RELEASE_TEMPLATE, "上位机：硬件在环 [M+]"),
+    ("skills/desktop-app-standard/references/rules.md", "pd-checklist", RELEASE_TEMPLATE, "桌面"),
+    ("skills/web-app-standard/references/rules.md", "pe-checklist", RELEASE_TEMPLATE, "Web"),
+    ("skills/mobile-app-standard/references/rules.md", "pf-checklist", RELEASE_TEMPLATE, "移动"),
+    ("skills/machine-vision-standard/references/rules.md", "vis-checklist", RELEASE_TEMPLATE, "视觉"),
+    ("skills/dashboard-standard/references/rules.md", "dsh-checklist", RELEASE_TEMPLATE, "大屏"),
+    (f"{GENERAL}/references/23-definition-of-done.md", "dod-task", DONE_TEMPLATE, "任务完成"),
+    (f"{GENERAL}/references/23-definition-of-done.md", "dod-merge", DONE_TEMPLATE, "合并完成"),
+    (f"{GENERAL}/references/23-definition-of-done.md", "dod-release", DONE_TEMPLATE, "发布完成"),
+    (f"{GENERAL}/references/23-definition-of-done.md", "dod-delivery", DONE_TEMPLATE, "交付完成 [M+]"),
 ]
 
-RULE_RE = re.compile(r"^\s*- \*\*(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\*\* `([A-Z][A-Z0-9]*-\d+)`")
+RULE_RE = re.compile(r"^\s*- \*\*(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\*\* `([A-Z][A-Z0-9]*-\d+)`(?: \[(M\+|L)\])?")
 ID_RE = re.compile(r"\b([A-Z][A-Z0-9]*-\d+)\b")
 RANGE_RE = re.compile(r"\b([A-Z][A-Z0-9]*)-(\d+)[–-](?:\1-)?(\d+)\b")
 LINK_RE = re.compile(r"\]\(([^)\s]+)\)")
@@ -45,6 +62,10 @@ FENCE_RE = re.compile(r"^```.*?^```", re.M | re.S)
 ANCHOR_RE = re.compile(r'<a id="([^"]+)"')
 HEADING_RE = re.compile(r"^#+ (.+)$", re.M)
 VERSION_RE = re.compile(r"（当前 (\d+\.\d+)，(\d{4}-\d{2}-\d{2})）")
+SKILL_KEYS = {"name", "description", "license", "compatibility", "metadata"}
+TIER_RANK = {"": 0, "M+": 1, "L": 2}
+FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
+SKILL_NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
 
 @dataclass(frozen=True)
@@ -54,10 +75,17 @@ class Rule:
     path: str
     line: int
     has_reason: bool
+    tier: str = ""
 
 
 def read(root, rel):
     return (root / rel).read_text(encoding="utf-8")
+
+
+def part_of(rel):
+    """Return the skill a repository path belongs to, or its top folder outside skills/."""
+    parts = rel.split("/")
+    return parts[1] if parts[0] == "skills" and len(parts) > 2 else parts[0]
 
 
 def markdown_files(root):
@@ -71,7 +99,7 @@ def parse_rules(text, rel="", line_offset=0):
         m = RULE_RE.match(line)
         if m:
             has_reason = i + 1 < len(lines) and lines[i + 1].lstrip().startswith("- 理由")
-            rules.append(Rule(m.group(2), m.group(1), rel, i + 1 + line_offset, has_reason))
+            rules.append(Rule(m.group(2), m.group(1), rel, i + 1 + line_offset, has_reason, m.group(3) or ""))
     return rules
 
 
@@ -155,42 +183,46 @@ def check_references(root, rules):
 
 def check_enforcement(root, rules):
     """Rule ENF-01: every MUST outside the drafts has a way of being checked in section 24."""
-    listed = expand_ranges(read(root, "general/24-enforcement.md"))
+    listed = expand_ranges(read(root, f"{GENERAL}/references/24-enforcement.md"))
     problems = []
     for rule in rules:
-        part = rule.path.split("/")[0]
-        if part in RELEASED_PARTS and rule.level.startswith("MUST") and rule.rule_id not in listed:
+        if part_of(rule.path) in RELEASED_PARTS and rule.level.startswith("MUST") and rule.rule_id not in listed:
             problems.append(f"{rule.path}:{rule.line}: {rule.rule_id} is {rule.level} and not listed in section 24")
     return problems
 
 
 def current_version(root):
-    m = VERSION_RE.search(read(root, "general/00-purpose.md"))
+    m = VERSION_RE.search(read(root, f"{GENERAL}/references/00-purpose.md"))
     return (m.group(1), m.group(2)) if m else (None, None)
 
 
 def check_versions(root):
     version, date = current_version(root)
     if version is None:
-        return ["general/00-purpose.md: G-07 does not state the current version"]
+        return [f"{GENERAL}/references/00-purpose.md: G-07 does not state the current version"]
     expected = [
-        ("general/README.md", f"版本 {version} · {date}"),
-        ("general/README.md", f"工程开发规范 {version} · {date}"),
-        ("general/appendix/changelog.md", f"| {version} | {date} |"),
+        (f"{GENERAL}/references/contents.md", f"版本 {version} · {date}"),
+        (f"{GENERAL}/references/contents.md", f"工程开发规范 {version} · {date}"),
+        (f"{GENERAL}/references/appendix/changelog.md", f"| {version} | {date} |"),
         ("CHANGELOG.md", f"## [{version}] - {date}"),
     ]
-    expected += [(f"{part}/README.md", f"状态：{version}。") for part in RELEASED_PARTS if part != "general"]
+    expected += [
+        (f"skills/{skill}/{status_file}", f"状态：{version}。")
+        for skill, (_, status_file) in RELEASED_PARTS.items()
+        if skill != "general-engineering-standard"
+    ]
     problems = [f"{rel}: does not say {text}" for rel, text in expected if text not in read(root, rel)]
     table = read(root, "README.md")
-    for label, part in [("所有项目", "general"), ("上位机", "hmi"), ("桌面应用", "desktop"), ("Web", "web"), ("移动 App", "mobile")]:
+    for label, _ in RELEASED_PARTS.values():
         if not re.search(rf"^\| {label} \|.*\| {re.escape(version)} \|$", table, re.M):
-            problems.append(f"README.md: the row for {label} ({part}) does not say {version}")
-    for part in DRAFT_PARTS:
-        m = re.search(r"状态：\*\*草稿 (\d+\.\d+)\*\*", read(root, f"{part}/README.md"))
+            problems.append(f"README.md: the row for {label} does not say {version}")
+    for skill, (label, status_file) in DRAFT_PARTS.items():
+        rel = f"skills/{skill}/{status_file}"
+        m = re.search(r"状态：\*\*草稿 (\d+\.\d+)\*\*", read(root, rel))
         if not m:
-            problems.append(f"{part}/README.md: has no draft status line")
-        elif not re.search(rf"\[{part}/\]\({part}/README\.md\).*\| 草稿 {re.escape(m.group(1))} \|$", table, re.M):
-            problems.append(f"README.md: the row for {part}/ does not say 草稿 {m.group(1)}")
+            problems.append(f"{rel}: has no draft status line")
+        elif not re.search(rf"^\| {label} \|.*\| 草稿 {re.escape(m.group(1))} \|$", table, re.M):
+            problems.append(f"README.md: the row for {label} does not say 草稿 {m.group(1)}")
     return problems
 
 
@@ -232,10 +264,96 @@ def check_template_copies(root):
     return problems
 
 
+def check_minimum_lists(root, rules):
+    """Each project type's SKILL.md has a minimum list, and it cites only existing MUST rules."""
+    levels = {rule.rule_id: rule.level for rule in rules}
+    problems = []
+    for skill in [*RELEASED_PARTS, *DRAFT_PARTS]:
+        rel = f"skills/{skill}/SKILL.md"
+        lines = read(root, rel).split("\n")
+        start = next((i for i, line in enumerate(lines) if line.startswith("## ") and "最小" in line), None)
+        if start is None:
+            problems.append(f"{rel}: has no minimum list")
+            continue
+        items = []
+        for line in lines[start + 1 :]:
+            if line.startswith("#"):
+                break
+            if re.match(r"\d+\. ", line):
+                items.append(line)
+        if skill == "general-engineering-standard":
+            if len(items) != 20:
+                problems.append(f"{rel}: the minimum list has {len(items)} items, and section 0.2 relies on 20")
+            continue
+        if not items:
+            problems.append(f"{rel}: the minimum list is empty")
+        for line in items:
+            cited = ID_RE.findall(line)
+            if not cited:
+                problems.append(f"{rel}: this minimum list item cites no rule: {line}")
+            for rule_id in cited:
+                if not levels.get(rule_id, "").startswith("MUST"):
+                    problems.append(f"{rel}: the minimum list cites {rule_id}, which is not a MUST")
+    return problems
+
+
+def check_skills(root):
+    """Each skill follows the Agent Skills format and links every file it ships."""
+    expected = sorted([*RELEASED_PARTS, *DRAFT_PARTS])
+    folders = sorted(p.name for p in (root / "skills").iterdir() if p.is_dir())
+    problems = [] if folders == expected else [f"skills/: expected {expected}, found {folders}"]
+    for name in folders:
+        rel = f"skills/{name}/SKILL.md"
+        if not (root / rel).exists():
+            problems.append(f"{rel}: is missing")
+            continue
+        text = read(root, rel)
+        m = FRONTMATTER_RE.match(text)
+        if not m:
+            problems.append(f"{rel}: has no frontmatter")
+            continue
+        fields = dict(re.findall(r'^(name|description|compatibility): "?(.*?)"?$', m.group(1), re.M))
+        for key in sorted(set(re.findall(r"^([A-Za-z_-]+):", m.group(1), re.M)) - SKILL_KEYS):
+            problems.append(f"{rel}: frontmatter key {key} is not part of the Agent Skills format we use")
+        if not re.search(r'^description: "[^"]*"$', m.group(1), re.M):
+            problems.append(f"{rel}: description must be one double-quoted line with no double quote inside")
+        if fields.get("name") != name or not SKILL_NAME_RE.match(name) or len(name) > 64:
+            problems.append(f"{rel}: name must match the folder and use lowercase letters, digits and single hyphens")
+        if not 1 <= len(fields.get("description", "")) <= 1024:
+            problems.append(f"{rel}: description must be 1 to 1024 characters")
+        if len(fields.get("compatibility", "")) > 500:
+            problems.append(f"{rel}: compatibility must be at most 500 characters")
+        if text.count("\n") > 500:
+            problems.append(f"{rel}: is over 500 lines")
+        linked = {(root / "skills" / name / m.group(1).partition("#")[0]).resolve() for m in LINK_RE.finditer(text)}
+        for folder in ("references", "assets"):
+            for path in sorted((root / "skills" / name / folder).rglob("*.md")):
+                if path.resolve() not in linked:
+                    problems.append(f"{rel}: does not link {path.relative_to(root).as_posix()}")
+    return problems
+
+
+def check_manifests(root):
+    plugin = json.loads(read(root, ".claude-plugin/plugin.json"))
+    market = json.loads(read(root, ".claude-plugin/marketplace.json"))
+    problems = []
+    if [entry["name"] for entry in market["plugins"]] != [plugin["name"]]:
+        problems.append(".claude-plugin/marketplace.json: must list exactly the plugin in plugin.json")
+    for entry in market["plugins"]:
+        if not (root / entry["source"]).is_dir():
+            problems.append(f".claude-plugin/marketplace.json: source {entry['source']} does not exist")
+    if f"{plugin['name']}@{market['name']}" not in read(root, "README.md"):
+        problems.append("README.md: the install command does not name this plugin and marketplace")
+    version, _ = current_version(root)
+    if "version" in plugin and not plugin["version"].startswith(f"{version}."):
+        problems.append(f".claude-plugin/plugin.json: version {plugin['version']} does not match the standard's {version}")
+    return problems
+
+
 def check_line_endings(root):
     problems = []
     for path in sorted(root.rglob("*")):
-        if ".git" in path.parts or not path.is_file() or path.suffix not in {".md", ".py", ".yml"}:
+        if ".git" in path.parts or not path.is_file() or path.suffix not in {".md", ".py", ".yml", ".json"}:
             continue
         data = path.read_bytes()
         rel = path.relative_to(root).as_posix()
@@ -264,18 +382,20 @@ def check_against_tag(root, rules):
     listing = git(root, "ls-tree", "-r", "--name-only", tag)
     old_rules = {}
     for rel in listing.stdout.split("\n"):
-        if rel.endswith(".md") and rel.split("/")[0] in RELEASED_PARTS:
+        if rel.endswith(".md") and (part_of(rel) in RELEASED_PARTS or rel.split("/")[0] in OLD_RELEASED_FOLDERS):
             shown = git(root, "show", f"{tag}:{rel}")
-            old_rules.update({r.rule_id: r.level for r in parse_rules(shown.stdout)})
-    now = {rule.rule_id: rule.level for rule in rules}
+            old_rules.update({r.rule_id: r for r in parse_rules(shown.stdout)})
+    now = {rule.rule_id: rule for rule in rules}
     problems = []
-    for rule_id, level in sorted(old_rules.items()):
-        if not level.startswith("MUST"):
+    for rule_id, old in sorted(old_rules.items()):
+        if not old.level.startswith("MUST"):
             continue
         if rule_id not in now:
-            problems.append(f"{rule_id}: was {level} in {tag} and is gone; that needs a new major version (G-07)")
-        elif not now[rule_id].startswith("MUST"):
-            problems.append(f"{rule_id}: was {level} in {tag} and is {now[rule_id]}; that needs a new major version (G-07)")
+            problems.append(f"{rule_id}: was {old.level} in {tag} and is gone; that needs a new major version (G-07)")
+        elif not now[rule_id].level.startswith("MUST"):
+            problems.append(f"{rule_id}: was {old.level} in {tag} and is {now[rule_id].level}; that needs a new major version (G-07)")
+        elif TIER_RANK[now[rule_id].tier] > TIER_RANK[old.tier]:
+            problems.append(f"{rule_id}: applied from tier [{old.tier}] in {tag} and now from [{now[rule_id].tier}]; that needs a new major version (G-07)")
     return problems
 
 
@@ -288,6 +408,9 @@ def run_checks(root):
     problems += check_enforcement(root, rules)
     problems += check_versions(root)
     problems += check_template_copies(root)
+    problems += check_minimum_lists(root, rules)
+    problems += check_skills(root)
+    problems += check_manifests(root)
     problems += check_line_endings(root)
     problems += check_against_tag(root, rules)
     return rules, problems
