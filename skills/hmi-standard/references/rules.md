@@ -4,7 +4,7 @@
 
 适用于与 PLC、仪表、驱动通信，供操作员监视、操作、记录的软件。等级标记照常适用；7×24 运行的产线系统通常是 [L]。
 
-状态：2.1。
+状态：3.0。
 
 **同时采用：** [通用规范](../../general-engineering-standard/references/contents.md)和[桌面与本机软件](../../desktop-app-standard/references/rules.md)。
 

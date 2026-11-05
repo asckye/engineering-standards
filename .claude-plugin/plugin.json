@@ -1,5 +1,6 @@
 {
   "name": "engineering-standards",
+  "version": "3.0.0",
   "displayName": "Engineering Standards",
   "description": "Engineering standards as Agent Skills: rules with ids and levels for any project, plus MCP servers, HMI, machine vision, dashboards, desktop, web and mobile apps.",
   "author": {

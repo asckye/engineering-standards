@@ -20,14 +20,14 @@ claude plugin install engineering-standards@asckye-standards
 
 | 项目类型 | Skill | 同时用 | 规则全文 | 状态 |
 |---|---|---|---|---|
-| 所有项目 | [general-engineering-standard](skills/general-engineering-standard/SKILL.md) | | [目录](skills/general-engineering-standard/references/contents.md) | 2.1 |
+| 所有项目 | [general-engineering-standard](skills/general-engineering-standard/SKILL.md) | | [目录](skills/general-engineering-standard/references/contents.md) | 3.0 |
 | MCP 服务 | [mcp-server-standard](skills/mcp-server-standard/SKILL.md) | 桌面的本机部分 | [概述](skills/mcp-server-standard/references/overview.md) | 草稿 0.2 |
-| 上位机 | [hmi-standard](skills/hmi-standard/SKILL.md) | 桌面 | [规则](skills/hmi-standard/references/rules.md) | 2.1 |
+| 上位机 | [hmi-standard](skills/hmi-standard/SKILL.md) | 桌面 | [规则](skills/hmi-standard/references/rules.md) | 3.0 |
 | 视觉 | [machine-vision-standard](skills/machine-vision-standard/SKILL.md) | 桌面，连 PLC 或供操作员操作时加上位机 | [规则](skills/machine-vision-standard/references/rules.md) | 草稿 0.2 |
 | 大屏 | [dashboard-standard](skills/dashboard-standard/SKILL.md) | Web 或桌面 | [规则](skills/dashboard-standard/references/rules.md) | 草稿 0.2 |
-| 桌面应用 | [desktop-app-standard](skills/desktop-app-standard/SKILL.md) | | [规则](skills/desktop-app-standard/references/rules.md) | 2.1 |
-| Web | [web-app-standard](skills/web-app-standard/SKILL.md) | | [规则](skills/web-app-standard/references/rules.md) | 2.1 |
-| 移动 App | [mobile-app-standard](skills/mobile-app-standard/SKILL.md) | | [规则](skills/mobile-app-standard/references/rules.md) | 2.1 |
+| 桌面应用 | [desktop-app-standard](skills/desktop-app-standard/SKILL.md) | | [规则](skills/desktop-app-standard/references/rules.md) | 3.0 |
+| Web | [web-app-standard](skills/web-app-standard/SKILL.md) | | [规则](skills/web-app-standard/references/rules.md) | 3.0 |
+| 移动 App | [mobile-app-standard](skills/mobile-app-standard/SKILL.md) | | [规则](skills/mobile-app-standard/references/rules.md) | 3.0 |
 
 所有项目都用通用规范。这些规范都还没有实测数据，也没有外部评审。
 
@@ -46,7 +46,7 @@ Skill 只能提醒，不能强制：代理可能没加载，也可能没照做�
 
 ## 版本与变更
 
-通用规范和各 skill 各自标明版本和状态。版本规则见 [G-07](skills/general-engineering-standard/references/00-purpose.md#purpose-gov)，变更见 [CHANGELOG.md](CHANGELOG.md)。
+通用规范和各 skill 各自标明版本和状态。发布时同时改 `.claude-plugin/plugin.json` 的 `version`，已安装插件的人靠它收到更新。版本规则见 [G-07](skills/general-engineering-standard/references/00-purpose.md#purpose-gov)，变更见 [CHANGELOG.md](CHANGELOG.md)。
 
 改动规范后运行 `python build-tools/check_standards.py`，它核对内部链接、规则编号、理由行、第 24 节、版本号、模板里的清单、skill 的基本格式和插件名称，并确认已发布的 MUST 没有被降级、删除或缩小等级范围。检查脚本的测试：`python -m unittest discover -s build-tools`。
 

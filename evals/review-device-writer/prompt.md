@@ -5,7 +5,7 @@ timeout_seconds: 900
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
 
-帮我评审这个改动，说说能不能合并。项目是对外发布的桌面产品，README 写着遵守《工程开发规范》2.1，等级 M，项目类型 desktop。评审结果直接写在回复里。
+帮我评审这个改动，说说能不能合并。项目是对外发布的桌面产品，README 写着遵守《工程开发规范》3.0，等级 M，项目类型 desktop。评审结果直接写在回复里。
 
 ```diff
 --- a/src/Sync/DeviceWriter.cs

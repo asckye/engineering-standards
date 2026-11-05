@@ -4,6 +4,12 @@ All notable changes to this repository are recorded here. The format follows [Ke
 
 ## [Unreleased]
 
+## [3.0] - 2026-11-05
+
+`general-engineering-standard`, `hmi-standard`, `desktop-app-standard`, `web-app-standard` and `mobile-app-standard` are 3.0; `mcp-server-standard`, `machine-vision-standard` and `dashboard-standard` are drafts at 0.2. The version is major for two reasons: section 0.2 narrows two MUST rules for small tools, listed under Changed, and every file moved. No rule was added or removed, and no rule entry changed its id, text or level.
+
+For a project following 2.1: links to `main` that use the old paths stop working, so update them to the new paths; links pinned to a tag keep working. Nothing else has to change. To have an agent load the rules, install the plugin as the README says.
+
 ### Added
 
 - The standard is now a set of Agent Skills and a Claude Code plugin. There is one skill per part, each with a `SKILL.md` that holds a task table saying which file to read, and the rules stay in that skill's `references/`.
@@ -14,7 +20,7 @@ All notable changes to this repository are recorded here. The format follows [Ke
 ### Changed
 
 - Files moved: `general/` to `skills/general-engineering-standard/references/`, `templates/` to its `assets/`, and each project-type folder to `skills/<skill>/references/`. A part's `README.md` is now `rules.md`, or `overview.md` for MCP and `contents.md` for the general part. `mcp/templates/` moved to that skill's `assets/`, and `general/00a-minimum.md` is now the general `SKILL.md`. Rule ids, rule text and levels did not change.
-- Small tools have their own shape in the golden path and the new-project playbook: one source file, one test file and a README. For an S-tier tool only the maintainer uses and does not publish, section 0.2 gives two conditional exceptions: `DOC-06` when there are no other users, and `P-14` when there are no logs, child processes, plugins or communication layers. This narrows two MUST rules for those tools only, so under G-07 it needs a new major version.
+- Small tools have their own shape in the golden path and the new-project playbook: one source file, one test file and a README. For an S-tier tool only the maintainer uses and does not publish, section 0.2 gives two conditional exceptions: `DOC-06` when there are no other users, and `P-14` when there are no logs, child processes, plugins or communication layers. This narrows two MUST rules for those tools only, which G-07 makes a major version.
 
 ## [2.1] - 2026-11-05
 
@@ -136,6 +142,7 @@ Changes made when the handbook moved from one HTML file to this repository. They
 - The directory tree in section 2.6 now includes `docs/plan` and `docs/postmortems`, which rules DOC-11 and BUG-06 name.
 - Section 6.11 now points at rule DSK-08 for signing, because section 14.1 has no signing rule.
 
-[Unreleased]: https://github.com/asckye/engineering-standards/compare/v2.1...HEAD
+[Unreleased]: https://github.com/asckye/engineering-standards/compare/v3.0...HEAD
+[3.0]: https://github.com/asckye/engineering-standards/compare/v2.1...v3.0
 [2.1]: https://github.com/asckye/engineering-standards/compare/v2.0...v2.1
 [2.0]: https://github.com/asckye/engineering-standards/releases/tag/v2.0
