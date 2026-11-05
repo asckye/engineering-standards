@@ -8,7 +8,7 @@
 2. 按黄金路径建骨架、构建入口、锁文件、分析器和格式化配置（[★ 黄金路径](00b-golden-path.md#golden)）。
 3. 建合并门命令和 CI，让第一条测试在两分钟内跑完（[★ 快速交付](00d-fast-delivery.md#fast)）。
 4. 写代理说明（[T.8](appendix/t-templates.md#tpl-agents)），复制术语表（[附录](appendix/glossary.md#glossary)）；[M+] 写明允许用的 AI 服务（AI-19）。
-5. [M+] 写 ADR 0001“采用本规范”、`SECURITY.md`、`THIRD-PARTY-NOTICES`。
+5. [M+] 写 ADR 0001“采用本规范”、`SECURITY.md`、`THIRD-PARTY-NOTICES`；开启多因素认证（SEC-43）；面向欧盟用户时写 CRA 的 ADR（SEC-44）。
 6. 用“新增功能”手册做第一个功能。
 
 ## <a id="play-feature"></a>新增功能
@@ -40,7 +40,7 @@
 ## <a id="play-dep"></a>增加依赖
 
 1. 先确认标准库或已有依赖做不到。
-2. 核对许可证（DEP-02）、维护状况、体积与传递依赖。
+2. 核对包名和发布者（DEP-01）、许可证（DEP-02）、维护状况、体积与传递依赖。
 3. 精确锁定版本并入锁文件（DEP-03）；离线还原可用（DEP-04）。
 4. 更新 `THIRD-PARTY-NOTICES`（DEP-06）；[M+] 更新 SBOM（DEP-11）。
 5. [M+] 运行时依赖经维护者批准，写一行理由或 ADR。
@@ -49,10 +49,10 @@
 
 1. 维护者确认版本号和范围；发布期间不改代码（BLD-07）。
 2. 核对发布证据：[M+] 最近一次夜间检查通过且之后无失败。
-3. 生成发布说明和“未验证”清单（[T.7](appendix/t-templates.md#tpl-release)），核对支持矩阵。
+3. 生成发布说明和“未验证”清单（[T.7](appendix/t-templates.md#tpl-release)），核对支持矩阵；[M+] 测过从上一版本升级（TST-13），不能直接退回时写明恢复办法（BLD-12）。
 4. 由发布命令改版本号、打包、算 SHA-256；[M+] 生成 SBOM。
-5. 预发布标为预发布、不设为最新；附测试清单与反馈模板（PKG-08）。
-6. 上传后更新交接文档与发布记录。
+5. 预发布标为预发布、不设为最新；附测试清单与反馈模板（PKG-08）；[M+] 能控制范围时分阶段发布（BLD-11）。
+6. 上传后更新交接文档与发布记录；[M+] 按写明的方式观察（BLD-11）。
 
 ## <a id="play-deliver"></a>上线交付 [M+]
 

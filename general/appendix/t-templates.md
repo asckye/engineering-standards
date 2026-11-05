@@ -110,7 +110,7 @@
 ## Summary
 ## Changes
 ## Upgrade
-<migration steps; breaking changes with the generated mapping table>
+<migration steps; how to go back to the previous version and what happens to data; breaking changes with the generated mapping table>
 ## Supported versions
 <verified / built but not verified / unsupported>
 ## Support status

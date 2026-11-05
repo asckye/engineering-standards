@@ -53,6 +53,7 @@
 - [附录 T：模板](appendix/t-templates.md)
 - [附录：术语表](appendix/glossary.md)
 - [参考资料](appendix/references.md)
+- [标准对照](appendix/standards-mapping.md)
 - [规范变更记录](appendix/changelog.md)
 
 ## 按规则编号查找
@@ -90,11 +91,13 @@
 | `P` | [general/01-principles.md](01-principles.md) |
 | `PERF` | [general/11-performance.md](11-performance.md) |
 | `PKG` | [desktop/packaging.md](../desktop/packaging.md)、[general/15-build-release.md](15-build-release.md) |
+| `PLN` | [general/18-process-review-git.md](18-process-review-git.md) |
 | `PRO` | [mcp/01-protocol.md](../mcp/01-protocol.md) |
 | `Q` | [general/04-quality.md](04-quality.md) |
 | `REQ` | [general/18-process-review-git.md](18-process-review-git.md) |
 | `REV` | [general/18-process-review-git.md](18-process-review-git.md) |
 | `SEC` | [desktop/local-software.md](../desktop/local-software.md)、[general/06-security.md](06-security.md) |
+| `SUP` | [general/29-support-retirement.md](29-support-retirement.md) |
 | `TL` | [mcp/02-tool-design.md](../mcp/02-tool-design.md) |
 | `TST` | [general/12-testing.md](12-testing.md) |
 | `UI` | [desktop/ui.md](../desktop/ui.md)、[general/21-ui.md](21-ui.md) |

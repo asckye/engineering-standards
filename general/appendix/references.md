@@ -12,6 +12,7 @@
 | 运行与交付 | [Google SRE Book](https://sre.google/sre-book/table-of-contents/)；[NIST SP 800-61](https://csrc.nist.gov/pubs/sp/800/61/r3/final)（网络安全事件响应）；[NIST SP 800-34](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final)（应急预案）；[IEC 62381:2024](https://webstore.iec.ch/en/publication/67572)（工厂验收、工厂集成、现场验收和现场集成测试；流程工业，离散制造只作参考）；IEC 62382（回路检查） |
 | 密码学 | [OWASP Cryptographic Storage](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)；[OWASP Password Storage](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)；[NIST SP 800-131A](https://csrc.nist.gov/pubs/sp/800/131/a/r2/final)（算法过渡）；[NIST SP 800-52](https://csrc.nist.gov/pubs/sp/800/52/r2/final)（TLS，正在复审）；[RFC 9325](https://www.rfc-editor.org/rfc/rfc9325.html)（TLS 建议）；[NIST IR 8547](https://csrc.nist.gov/pubs/ir/8547/final)（后量子迁移） |
 | AI 安全 | [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/)；[OWASP Top 10 for Agentic Applications](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) |
+| 安全开发与法规 | [NIST SSDF（SP 800-218）](https://csrc.nist.gov/pubs/sp/800/218/final)；[Cyber Resilience Act（EU 2024/2847）](https://eur-lex.europa.eu/eli/reg/2024/2847/oj/eng)；[委员会指南 C(2026) 5252](https://ec.europa.eu/newsroom/dae/redirection/document/131456)；[ENISA 单一报告平台](https://www.enisa.europa.eu/news/the-cra-single-reporting-platform-is-launched)。对照见[标准对照](standards-mapping.md) |
 
 ---
 

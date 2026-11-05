@@ -6,7 +6,7 @@
 2. 建目录骨架（2.6），加入 `.editorconfig`、`.gitattributes`（`* text=auto eol=lf`）、`core.autocrlf=false`、分析器与格式化配置、中央版本管理和锁文件。
 3. 在 `build-tools/` 建唯一入口，至少提供 `build`、`test`、`check`（合并门）、`package`。
 4. 加入执行机制（24 节表格中本等级需要的行）：架构测试、仓库检查、密钥扫描、套件注册表、PR 模板。
-5. 写 `CHANGELOG.md`、`SECURITY.md` [M+]、`THIRD-PARTY-NOTICES`，以及 ADR 0001“采用工程开发规范 <版本> 与项目类型 X”。
+5. 写 `CHANGELOG.md`、`SECURITY.md` [M+]、`THIRD-PARTY-NOTICES`，以及 ADR 0001“采用工程开发规范 <版本> 与项目类型 X”。[M+] 开启多因素认证（SEC-43）；面向欧盟用户时写 CRA 的 ADR（SEC-44）。
 6. 写简短的代理说明文件（模板 [T.8](appendix/t-templates.md#tpl-agents)），只放规范版本、等级、项目类型和项目特有的规则；复制术语表并补充领域术语。
 
 ---

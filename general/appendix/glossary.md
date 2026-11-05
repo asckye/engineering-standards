@@ -40,6 +40,10 @@
 | 个人数据 | personal data | — | 能识别到具体的人的信息，包括操作员账号、日志里的用户名和图像里拍到的人 |
 | 客户数据 | customer data | — | 客户的项目和未脱敏的现场数据 |
 | 匿名化 | anonymization | — | 处理后无法再识别到个人，也不能复原；假名化还能复原，仍算个人数据 |
+| 支持期 | support period | — | 产品还会收到修复的期限，写在支持政策中 |
+| 制造商 | manufacturer | — | CRA 中以自己的名义开发和销售产品的人或公司 |
+| 开源软件管理者 | open-source software steward | — | CRA 中长期维护、面向商业集成但不变现开源软件的法人 |
+| 被实际利用的漏洞 | actively exploited vulnerability | — | 有可靠证据表明已被恶意利用的漏洞；CRA 要求上报 |
 
 ---
 
