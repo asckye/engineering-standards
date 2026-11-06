@@ -30,8 +30,6 @@ DRAFT_PARTS = {
     "machine-vision-standard": ("视觉", "references/rules.md"),
     "dashboard-standard": ("大屏", "references/rules.md"),
 }
-# Where the released parts lived in tags older than the skills layout.
-OLD_RELEASED_FOLDERS = {"general", "desktop", "hmi", "web", "mobile"}
 # Files that describe past states, so they may name rules that no longer exist.
 HISTORY_FILES = {"CHANGELOG.md", f"{GENERAL}/references/appendix/changelog.md", "skills/mcp-server-standard/references/handbook-mapping.md"}
 # Looks like a rule id but is not one: the elliptic curve name.
@@ -382,7 +380,7 @@ def check_against_tag(root, rules):
     listing = git(root, "ls-tree", "-r", "--name-only", tag)
     old_rules = {}
     for rel in listing.stdout.split("\n"):
-        if rel.endswith(".md") and (part_of(rel) in RELEASED_PARTS or rel.split("/")[0] in OLD_RELEASED_FOLDERS):
+        if rel.endswith(".md") and part_of(rel) in RELEASED_PARTS:
             shown = git(root, "show", f"{tag}:{rel}")
             old_rules.update({r.rule_id: r for r in parse_rules(shown.stdout)})
     now = {rule.rule_id: rule for rule in rules}

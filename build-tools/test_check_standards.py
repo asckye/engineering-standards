@@ -84,10 +84,10 @@ class CheckStandardsTests(unittest.TestCase):
         self.assertIn("AB-03", problems[0])
 
     def test_template_copy_drift_is_reported_both_ways(self):
-        self.write("general/26-checklists.md", '## <a id="checklist-release"></a>26.1\n\n- [ ] 甲（`AB-01`）。\n- [ ] 乙。\n')
-        self.write("templates/release-checklist.md", "## 发布核对\n\n- [ ] 甲（AB-01）。\n- [ ] 丙。\n")
-        original = cs.section_items(cs.read(self.root, "general/26-checklists.md"), 'id="checklist-release"')
-        copy = cs.section_items(cs.read(self.root, "templates/release-checklist.md"), "## 发布核对")
+        self.write(f"{cs.GENERAL}/references/26-checklists.md", '## <a id="checklist-release"></a>26.1\n\n- [ ] 甲（`AB-01`）。\n- [ ] 乙。\n')
+        self.write(cs.RELEASE_TEMPLATE, "## 发布核对\n\n- [ ] 甲（AB-01）。\n- [ ] 丙。\n")
+        original = cs.section_items(cs.read(self.root, f"{cs.GENERAL}/references/26-checklists.md"), 'id="checklist-release"')
+        copy = cs.section_items(cs.read(self.root, cs.RELEASE_TEMPLATE), "## 发布核对")
         self.assertEqual(original - copy, {"- [ ] 乙。"})
         self.assertEqual(copy - original, {"- [ ] 丙。"})
 
@@ -177,15 +177,14 @@ class CheckStandardsTests(unittest.TestCase):
     def git(self, *args):
         subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@example.invalid", *args], cwd=self.root, check=True, capture_output=True)
 
-    def test_must_lowered_since_an_old_layout_tag_is_reported(self):
-        self.write("general/a.md", "- **MUST** `AB-01` 甲\n  - 理由 · 乙\n- **MUST** `AB-02` 甲\n  - 理由 · 乙\n- **MUST** `AB-03` 甲\n  - 理由 · 乙\n- **MUST** `AB-04` 甲\n  - 理由 · 乙\n")
+    def test_must_lowered_since_the_last_tag_is_reported(self):
+        self.write(f"{cs.GENERAL}/references/a.md", "- **MUST** `AB-01` 甲\n  - 理由 · 乙\n- **MUST** `AB-02` 甲\n  - 理由 · 乙\n- **MUST** `AB-03` 甲\n  - 理由 · 乙\n- **MUST** `AB-04` 甲\n  - 理由 · 乙\n")
         self.git("init", "-q")
-        self.git("add", "general/a.md")
+        self.git("add", f"{cs.GENERAL}/references/a.md")
         self.git("commit", "-q", "-m", "first")
         self.git("tag", "v2.1")
         self.write(f"{cs.GENERAL}/references/00-purpose.md", "（当前 2.1，2026-11-05）\n")
         self.write(f"{cs.GENERAL}/references/a.md", "- **MUST** `AB-01` 甲\n  - 理由 · 乙\n- **SHOULD** `AB-02` 甲\n- **MUST** `AB-04` [M+] 甲\n  - 理由 · 乙\n")
-        (self.root / "general/a.md").unlink()
         problems = cs.check_against_tag(self.root, cs.all_rules(self.root))
         self.assertEqual(len(problems), 3)
         self.assertIn("AB-02: was MUST in v2.1 and is SHOULD", problems[0])
